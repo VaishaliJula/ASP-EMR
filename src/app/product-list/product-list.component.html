@@ -1,0 +1,42 @@
+<div class='card'>
+	<div class='card-header'>
+		{{pageTitle}} <!-- Interpolation -->
+	</div>
+	<div class='card-body'>
+		<div class='row'>
+			<div class='col-md-2'>Filter By:</div>
+			<div class='col-md-4'> 
+				<Input type='text' [(ngModel)] = 'listFilter' ngDefaultControl/> <!-- added ngDefaultControl as there was an ngModel error -->
+			 </div>
+		</div>
+		<div class='row'>
+			<div class='col-md-6'><h4>Filtered By:{{listFilter}}</h4></div>
+		</div>
+		<div class='table-responsive'>
+  			<table class='table' *ngIf='products && products.length'>
+  				<thead>
+  					<tr>
+  						<th><button class='btn btn-primary' (click)='toggleImage()'>{{showImage? 'Hide' : 'Show'}} Image</button></th>
+  						<th>Product</th>
+  						<th>Code</th>
+  						<th>Available</th>
+  						<th>Price</th>
+  						<th>5 Star Rating</th>
+  					</tr>
+  				</thead> <!-- table header ends -->
+  				<tbody>
+  					<tr *ngFor='let product of products'>
+  					  	<td><img *ngIf='showImage' [src]='product.imageURL' [title]='product.productName' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'></td>
+  						<td>{{product.productName}}</td>
+  						<td>{{product.productCode | lowercase }}</td>
+  						<td>{{product.releaseDate}}</td>
+  						<td>{{product.price | currency:'USD':'symbol':'1.2-2'}}</td> <!-- using angular pipes to get currency -->
+  						<td>{{product.starRating}}</td>
+  					
+  					</tr>
+  				</tbody> <!-- table body ends -->
+  			</table>
+		</div>
+	</div> <!-- card body ends -->
+
+</div>

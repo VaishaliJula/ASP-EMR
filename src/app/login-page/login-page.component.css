@@ -1,0 +1,28 @@
+.loginRow {
+	padding: 120px;
+}
+.advSection {
+	text-align: center;
+}
+.noBullets {
+	list-style-type: none;
+}
+h3{
+	color: #33a6d7;
+}
+.changeViewButton{border-radius: 20px;}
+
+/* .loginSection {
+	text-align: center;
+} */
+h4{
+	color: #489dff;
+	text-align: center;
+	}
+.signInButton {
+	border-radius: 30px;
+	width: 130px;
+}
+
+
+
