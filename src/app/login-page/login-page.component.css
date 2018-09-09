@@ -1,5 +1,8 @@
 .loginRow {
 	padding: 120px;
+	max-width: 100%;
+    overflow-x: hidden;
+
 }
 .advSection {
 	text-align: center;
@@ -10,11 +13,9 @@
 h3{
 	color: #33a6d7;
 }
-.changeViewButton{border-radius: 20px;}
-
-/* .loginSection {
-	text-align: center;
-} */
+.loginSection{
+	height: 260px;
+}
 h4{
 	color: #489dff;
 	text-align: center;
