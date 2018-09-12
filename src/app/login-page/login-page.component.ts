@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login-page',
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class LoginPageComponent implements OnInit {
 
 loginTitle = 'Sign In';
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit() {
+  }
+  callProducts(){
+    console.log("func called")
+  this.router.navigate(['/ProductList']);
   }
 
 }

@@ -6,12 +6,8 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { HeaderComponent } from './header/header.component';
-import { RouterModule, Routes } from '@angular/router';
-
-const appRoutes: Routes = [
-  { path: 'registration', component: SignUpPageComponent },
-  { path: '', component: LoginPageComponent },
-];
+import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,12 +15,12 @@ const appRoutes: Routes = [
     SignUpPageComponent,
     LoginPageComponent,
     ProductListComponent,
-    HeaderComponent
+    HeaderComponent,
+    PatientDashboardComponent
   ],
   imports: [
     BrowserModule, // 3rd party or external directives, components or pipes are declared here
-    FormsModule,
-    RouterModule.forRoot(appRoutes)
+    FormsModule, AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
