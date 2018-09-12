@@ -1,62 +1,173 @@
- <p>
-  Registration-page works!
-  {{ signupTitle }}
-</p>
-<div class="row custom-row">
-  <div class= "col-sm-5 custom-container jumbotron">
-       
-    <form class="form-horizontal">
-        <fieldset>
-          <legend>SignUp</legend>
-         
-            <!--- Email Block --->
-            <div class="form-group">
-              <label for="inputEmail">Email</label>
-              <input type="text"
-                id="inputEmail"
-                placeholder="Email">
-            </div>
-            <!--- Password Block --->
-            <div class="form-group">
-              <label for="inputPassword">Password</label>
-              <input type="password"
-                id="inputPassword"
-                placeholder="Password">
-            </div>
-     
-            <div class="form-group">
-              <label for="confirmPassword" >Confirm Password</label>
-              <input type="password"
-                id="confirmPassword"
-                placeholder="Password">
-            </div>
-             
-            <!--- Select gender Block --->
-            <div class="form-group">
-              <label for="select">Gender</label>
-                <select id="select">
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Other</option>
-                </select>
-            </div>
-             
-            <!--- Terms and conditions Block --->
-             <div class="form-group checkbox">
-              <label>
-                <input type="checkbox"> Confirm that you've read the Terms and 
-                Conditions
-              </label>
-            </div>
+<head>
+    <title>Page Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+ <body>
+ <h3 style="text-align:center">Welcome to Registration</h3>
+ <div class="container-fluid">
+  <div class="col-lg-12 well">
+
+    <div class="row">
+      <div class="col-sm-3">
+        <label>Salutation</label><br>
+        <select>
+            <option value="none">None</option>
+            <option value="Mr">Mr</option>
+            <option value="Ms">Ms</option>
+            <option value="Mrs">Mrs</option>
+          </select>
+      </div>
+      <div class="col-sm-3">
+          <label>FirstName</label><br>
+          <input type="text" placeholder="FirstName">
+       </div>
+      <div class="col-sm-3">
+          <label>LastName</label><br>
+          <input type="text" placeholder="LastName">      
+      </div>
+      <div class="col-sm-3">
+          <label>MRnum</label><br>
+          <input type="text" placeholder="MRnum">      
+      </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-3">
+          <label>Gender</label><br>
+          <input type="text" placeholder="Gender">
+        </div>
+        <div class="col-sm-3">
+            <label>Date of Birth</label><br>
             
-           <!--- Buttons Block --->
-            <div class="form-group">
-                <button type="reset" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </fieldset>
-    </form>
+         </div>
+        <div class="col-sm-3">
+            <label>Race</label><br>
+            <input type="text" placeholder="Race">      
+        </div>
+        <div class="col-sm-3">
+            <label>Ethnicity</label><br>
+            <input type="text" placeholder="Ethnicity">      
+        </div>
+      </div>
+      <br>
+      <div class="row">
+          <div class="col-sm-3">
+            <label>Occupation</label><br>
+            <input type="text" placeholder="Occupation">
+          </div>
+          <div class="col-sm-3">
+              <label>SSN</label><br>
+              <input type="text" placeholder="SSN">
+           </div>
+           <div class="col-sm-3">
+              <label>Gender Identity</label><br>
+              <input type="text" placeholder="Gender Identity">      
+          </div>
+          <div class="col-sm-3">
+              <label>Sex Orientation</label><br>
+              <input type="text" placeholder="Sex Orientation">      
+          </div>
+        </div>
   </div>
-</div>
-
-
+ </div>
+ <div class="container-fluid">
+    <div class="col-lg-12 well">
+      <div class="row">
+          <div class="col-sm-3">
+              <label>Preferred Language</label><br>
+              <input type="text" placeholder="PreferredLanguage">
+           </div>
+          <div class="col-sm-3">
+              <label>Communication Preferrence</label><br>
+              <input type="text" placeholder="Communication Preferrence">      
+          </div>
+          <div class="col-sm-3">
+              <label>Marital Status</label><br>
+              <input type="text" placeholder="Marital Status">      
+          </div>
+          <div class="col-sm-3">
+              <label>Disability Status</label><br>
+              <input type="text" placeholder="Disability Status">      
+          </div>
+      </div>
+      <br>
+      <div class="row">
+          <div class="col-sm-3">
+            <label>Address Line 1</label><br>
+            <input type="text" placeholder="Address Line 1">
+          </div>
+          <div class="col-sm-3">
+              <label>Address Line 2</label><br>
+              <input type="text" placeholder="Address Line 2">
+           </div>
+           <div class="col-sm-3">
+              <label>Zip Code</label><br>
+              <input type="text" placeholder="Zip Code">      
+          </div>
+          <div class="col-sm-3">
+              <label>City</label><br>
+              <input type="text" placeholder="City">      
+          </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-3">
+                <label>State</label><br>
+                <input type="text" placeholder="State">
+             </div>
+            <div class="col-sm-3">
+                <label>Home Telephone</label><br>
+                <input type="text" placeholder="Home Telephone">      
+            </div>
+            <div class="col-sm-3">
+                <label>Mobile Number</label><br>
+                <input type="text" placeholder="Mobile Number">      
+            </div>
+            <div class="col-sm-3">
+                <label>First Visit</label><br>
+                     
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+      <div class="col-lg-12 well">
+          <div class="row">
+              <div class="col-sm-4">
+                  <label>Kin_First</label><br>
+                  <input type="text" placeholder="Kin_First">
+               </div>
+              <div class="col-sm-4">
+                  <label>Kin_Last</label><br>
+                  <input type="text" placeholder="Kin_Last">      
+              </div>
+              <div class="col-sm-4">
+                  <label>Kin_Address</label><br>
+                  <input type="text" placeholder="Kin_Address">      
+              </div>
+            
+          </div>
+          <br>
+          <div class="row">
+              <div class="col-sm-4">
+                  <label>Kin_Telephone</label><br>
+                  <input type="text" placeholder="Kin_Telephone">      
+              </div>
+              <div class="col-sm-4">
+                  <label>Relationship</label><br>
+                  <input type="text" placeholder="Relationship">      
+              </div>
+          </div>
+      </div>
+  </div>
+  <div id="submit">
+      <input type="submit" class="btn btn-info">&nbsp;&nbsp;&nbsp;&nbsp;
+      
+     </div>
+     <br>
+</body>
