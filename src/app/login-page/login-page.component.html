@@ -15,7 +15,7 @@
 
 	<div class="col-md-5 border loginSection">
 		<h4>{{loginTitle}}</h4>
-		<span>New to Tender? <a href="">Create your account</a></span>
+		<span>New to Tender? <a href="/registration">Create your account</a></span>
 		<form novalidate>
 			<div class="form-group">
 				<input type="text" class="form-control" id="email"
@@ -30,7 +30,7 @@
 					class="form-check-input" id="remember_me"> <label>Remember
 					Me</label>
 			</div>
-			<span><button type="button"
+			<span><button type="button" (click)="callProducts()"
 					class="btn btn-outline-primary btn-rounded waves-effect signInButton">Sign
 					In</button> <a href=""> Forgot Password</a></span>
 		</form>

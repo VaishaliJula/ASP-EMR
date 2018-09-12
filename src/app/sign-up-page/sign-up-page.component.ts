@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { RouterModule, Routes, Router } from '@angular/router';
 @Component({
   selector: 'app-sign-up-page',
   templateUrl: './sign-up-page.component.html',
@@ -12,5 +12,4 @@ export class SignUpPageComponent implements OnInit {
 
   ngOnInit() {
   }
-
-}
+ }
