@@ -8,6 +8,9 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { HeaderComponent } from './header/header.component';
 import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegistrationService } from 'src/app/registration.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -20,9 +23,11 @@ import { AppRoutingModule } from './/app-routing.module';
   ],
   imports: [
     BrowserModule, // 3rd party or external directives, components or pipes are declared here
-    FormsModule, AppRoutingModule
+    FormsModule, AppRoutingModule,
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
