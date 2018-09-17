@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-page',
@@ -8,14 +8,14 @@ import { Router } from "@angular/router";
 })
 export class LoginPageComponent implements OnInit {
 
-loginTitle = 'Sign In';
-  constructor(private router : Router) { }
+  loginTitle = 'Sign In';
+  constructor(private router: Router) {}
 
   ngOnInit() {
   }
-  callProducts(){
+  callProducts() {
     console.log("func called")
-  this.router.navigate(['/ProductList']);
+    this.router.navigate(['/PatientDashboard']);
   }
 
 }

@@ -1,8 +1,8 @@
 <div class="row loginRow">
 
-	<div class="col-md-7 advSection">
+	<div class="col-md-6 advSection">
 		<div>
-			<h3>Ambulatory EMR</h3>
+			<h1>Ambulatory EMR</h1>
 			<img src="assets/hospital-staff.jpg" alt="Ops!!!" width=200em
 				height=200em>
 			<ul class="noBullets">
@@ -13,9 +13,10 @@
 
 	</div>
 
-	<div class="col-md-5 border loginSection">
-		<h4>{{loginTitle}}</h4>
-		<span>New to Tender? <a routerLink ="/registration">Create your account</a></span>
+	<div class="col-md-6 border loginSection">
+		<h3>{{loginTitle}}</h3>
+		<span>New to Tender? <a routerLink="/registration">Create
+				your account</a></span>
 		<form novalidate>
 			<div class="form-group">
 				<input type="text" class="form-control" id="email"
@@ -25,13 +26,11 @@
 				<input type="password" class="form-control" id="password"
 					placeholder="Password" name="password" required>
 			</div>
-			<div class="form-group">
-				&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox"
-					class="form-check-input" id="remember_me"> <label>Remember
-					Me</label>
+			<div class="checkbox">
+				<label><input type="checkbox"> Remember me</label>
 			</div>
 			<span><button type="button" (click)="callProducts()"
-					class="btn btn-outline-primary btn-rounded waves-effect signInButton">Sign
+					class="btn btn-secondary btn-rounded waves-effect signInButton">Sign
 					In</button> <a href=""> Forgot Password</a></span>
 		</form>
 	</div>

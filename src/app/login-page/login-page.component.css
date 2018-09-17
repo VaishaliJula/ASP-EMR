@@ -10,14 +10,15 @@
 .noBullets {
 	list-style-type: none;
 }
-h3{
-	color: #33a6d7;
+h1{
+	color: #006699;
 }
 .loginSection{
-	height: 260px;
+	height: 220px;
 }
-h4{
-	color: #489dff;
+h3{
+	padding-top: 10px;
+	color: #006699;
 	text-align: center;
 	}
 .signInButton {
