@@ -13,9 +13,4 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
   }
-  callProducts() {
-    console.log("func called")
-    this.router.navigate(['/PatientDashboard']);
-  }
-
 }

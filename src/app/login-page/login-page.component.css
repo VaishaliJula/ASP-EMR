@@ -14,7 +14,8 @@ h1{
 	color: #006699;
 }
 .loginSection{
-	height: 220px;
+	height: auto;
+	width: auto;
 }
 h3{
 	padding-top: 10px;
@@ -25,6 +26,3 @@ h3{
 	border-radius: 30px;
 	width: 130px;
 }
-
-
-

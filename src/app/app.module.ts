@@ -11,6 +11,11 @@ import { AppRoutingModule } from './/app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationService } from 'src/app/registration.service';
 import { HttpModule } from '@angular/http';
+import { PatientsComponent } from './patients/patients.component';
+import { AppointmentsComponent } from './appointments/appointments.component';
+import { PatientsService } from 'src/app/patients.service';
+import { HttpClientModule } from '@angular/common/http';
+import { BsDatepickerModule } from 'ngx-bootstrap'; 
 
 @NgModule({
   declarations: [
@@ -19,15 +24,19 @@ import { HttpModule } from '@angular/http';
     LoginPageComponent,
     ProductListComponent,
     HeaderComponent,
-    PatientDashboardComponent
+    PatientDashboardComponent,
+    PatientsComponent,
+    AppointmentsComponent
   ],
   imports: [
     BrowserModule, // 3rd party or external directives, components or pipes are declared here
     FormsModule, AppRoutingModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule,
+    BsDatepickerModule.forRoot()
   ],
-  providers: [RegistrationService],
+  providers: [RegistrationService,PatientsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
