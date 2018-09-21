@@ -1,0 +1,43 @@
+<div class='card'>
+  <div class='card-header'>
+      {{pageTitle}}
+      <!-- Interpolation -->
+  </div>
+  <div class='card-body'>
+      <div class='table-responsive'>
+          <table class='table' *ngIf='appointments && appointments.length'>
+              <thead>
+                  <tr>
+                      <th>MR</th>
+                      <th>PatientName</th>
+                      <th>SOAPtype</th>
+                      <th>Acc</th>
+                      <th>DOB</th>
+                      <th>Insurance</th>
+                      <th>Status</th>
+                      <th>EHR type</th>
+                      <th>Department</th>
+                  </tr>
+              </thead>
+              <!-- table header ends -->
+              <tbody>
+                  <tr *ngFor='let appointment of appointments'>
+                      <td>{{appointment.mr}}</td>
+                      <td>{{appointment.patientName | lowercase }}</td>
+                      <td>{{appointment.soapType}}</td>
+                      <td>{{appointment.acc}}</td>
+                      <td>{{appointment.dob}}</td>
+                      <td>{{appointment.insurance | lowercase }}</td>
+                      <td>{{appointment.status}}</td>
+                      <td>{{appointment.ehrtype}}</td>
+                      <td>{{appointment.department}}</td>
+
+                  </tr>
+              </tbody>
+              <!-- table body ends -->
+          </table>
+      </div>
+  </div>
+  <!-- card body ends -->
+
+</div>
