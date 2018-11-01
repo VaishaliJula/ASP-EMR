@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import { FormGroup, FormControl,Validators } from '@angular/forms';
+import { LoginService } from 'src/app/login.service'
+// import { FormGroup } from '@angular/forms/src/model';
 
 @Component({
   selector: 'app-login-page',
@@ -9,8 +12,21 @@ import {Router} from "@angular/router";
 export class LoginPageComponent implements OnInit {
 
   loginTitle = 'Sign In';
-  constructor(private router: Router) {}
+  loginForm;
+  constructor(private service: LoginService) {}
 
   ngOnInit() {
+    this.createForm();
+  }
+  createForm(){
+    this.loginForm = new FormGroup({
+      email : new FormControl("",Validators.required),
+      password : new FormControl("",Validators.required)
+    });
+
+  }
+  checkRole(value){
+    this.service.validateLoginStaff(value);
+    this.loginForm.reset();
   }
 }

@@ -15,9 +15,7 @@
 
 	<div class="col-md-6 border loginSection">
 		<h3>{{loginTitle}}</h3>
-		<span>New to Tender? <a routerLink="/registration">Create
-				your account</a></span>
-		<form novalidate>
+	<form [formGroup]="loginForm" (ngSubmit)="checkRole(loginForm.value)">
 			<div class="form-group">
 				<input type="text" class="form-control" id="email"
 					placeholder="E-Mail" name="email" required>

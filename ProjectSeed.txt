@@ -1,0 +1,29 @@
+SELECT * FROM test.patient_registration;INSERT INTO `test`.`medicalstaff_registration`
+(`roleid`,
+`addressline1`,
+`addressline2`,
+`city`,
+`dob`,
+`email`,
+`first_name`,
+`last_name`,
+`mobile_no`,
+`password`,
+`state`,
+`zip_code`)
+VALUES
+(<{roleid: 1medicalstaff_registrationroleid}>,
+<{addressline1: '11213 McGee'}>,
+<{addressline2: 'Apt 301'}>,
+<{city: 'Kansas City'}>,
+<{dob: '1994-03-07'}>,
+<{email: 'vaishali.jula@gmail.com'}>,
+<{first_name: 'Vaishali'}>,
+<{last_name: 'Mahavratayajula'}>,
+<{mobile_no: 9137776877}>,
+<{password: 'vamshi'}>,
+<{state: 'Kansas'}>,
+<{zip_code: 64114}>);
+
+insert into medicalstaff_registration values
+('vaishali.jula@gmail.com','11213 McGee St','Apt 301','Kansas city','1994-07-03','Vaishali','Mahavratayajula',9137776877,'vamshi',1,'MO',64114);
