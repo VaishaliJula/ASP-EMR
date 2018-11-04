@@ -23,7 +23,7 @@ export class LoginPageComponent implements OnInit {
       email : new FormControl("",Validators.required),
       password : new FormControl("",Validators.required)
     });
-
+    
   }
   checkRole(value){
     this.service.validateLoginStaff(value);

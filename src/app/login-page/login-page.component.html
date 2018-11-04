@@ -3,8 +3,7 @@
 	<div class="col-md-6 advSection">
 		<div>
 			<h1>Ambulatory EMR</h1>
-			<img src="assets/hospital-staff.jpg" alt="Ops!!!" width=200em
-				height=200em>
+			<img src="assets/hospital-staff.jpg" alt="Ops!!!" width=200em height=200em>
 			<ul class="noBullets">
 				<li>Streamline the Patient Medicare Process</li>
 				<li>Regularize the Patient Ambulatory care time to 15 minutes</li>
@@ -15,22 +14,17 @@
 
 	<div class="col-md-6 border loginSection">
 		<h3>{{loginTitle}}</h3>
-	<form [formGroup]="loginForm" (ngSubmit)="checkRole(loginForm.value)">
-			<div class="form-group">
-				<input type="text" class="form-control" id="email"
-					placeholder="E-Mail" name="email" required>
-			</div>
-			<div class="form-group">
-				<input type="password" class="form-control" id="password"
-					placeholder="Password" name="password" required>
-			</div>
-			<div class="checkbox">
-				<label><input type="checkbox"> Remember me</label>
-			</div>
-			<span><button type="button" [routerLink]="['/PatientDashboard']"
-					class="btn btn-danger btn-rounded waves-effect signInButton">Sign
-					In</button> <a href=""> Forgot Password</a></span>
+		<form [formGroup]="loginForm" (ngSubmit)="checkRole(loginForm.value)">
+			<label>Email</label>
+			<input type="text" placeholder="E-Mail" formControlName="email">
+			<label>Password</label>
+			<input type="password" placeholder="Password" formControlName="password">
+			<label><input type="checkbox"> Remember me</label>
+			<span>
+				<button type="submit" class="btn btn-danger btn-rounded waves-effect signInButton">Sign In
+				</button>
+				<a href=""> Forgot Password</a>
+			</span>
 		</form>
 	</div>
-
 </div>
