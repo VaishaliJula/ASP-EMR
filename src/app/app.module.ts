@@ -16,6 +16,8 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { PatientsService } from 'src/app/patients.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BsDatepickerModule } from 'ngx-bootstrap'; 
+import { LoginService } from 'src/app/login.service';
+import { AuthGuard } from 'src/app/auth.guard';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     HttpClientModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [RegistrationService,PatientsService],
+  providers: [RegistrationService,LoginService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

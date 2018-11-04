@@ -1,20 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  isUserLoggedIn: boolean;
 
-  constructor(private router: Router, private httpClient : HttpClient) { }
+  constructor(private router: Router, private httpClient: HttpClient) {
+    this.isUserLoggedIn = false;
+  }
 
-  validateLoginStaff(formData){
-    let staffURL ='http://localhost:8080/staff/login';
-    let queryParams = {email: formData.email,password: formData.password};
-    var user =  this.httpClient.get(staffURL,{params :queryParams}).subscribe((res) =>{
-      console.log(res);
-    });       
+  validateLoginStaff(formData): void {
+    let staffURL = 'http://localhost:8080/staff/login';
+    let queryParams = { email: formData.email, password: formData.password };
+
+    this.httpClient.get(staffURL, { params: queryParams, observe: 'response' }).subscribe((res) => {
+
+      if (res.status == 200) {
+        this.isUserLoggedIn = true;
+        this.router.navigate(['/PatientDashboard', formData.email]);
+      }
+      else {
+        this.router.navigate(['/']);
+        console.log('Unauthorized access');
+      }
+    });
+  }
+
+  getUserLoggedIn() {
+    return this.isUserLoggedIn;
   }
 }
