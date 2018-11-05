@@ -6,13 +6,15 @@ import { ProductListComponent }      from './product-list/product-list.component
 import { SignUpPageComponent } from "./sign-up-page/sign-up-page.component";
 import { AppointmentsComponent } from "src/app/appointments/appointments.component";
 import { PatientsComponent } from "src/app/patients/patients.component";
+import { AuthGuard } from "src/app/auth.guard";
 
 const routes: Routes = [
-  { path:   '', component :LoginPageComponent},
+  { path:   '',    component :LoginPageComponent},
   { path: 'ProductList', component: ProductListComponent },
-  { path: 'PatientDashboard', 
-  component: PatientDashboardComponent,
-  children : [{path : 'registration', component: SignUpPageComponent},
+  { path: 'PatientDashboard/:email',
+    component: PatientDashboardComponent,
+    canActivate:[AuthGuard], 
+     children : [{path : 'registration', component: SignUpPageComponent},
               {path : 'appointments', component: AppointmentsComponent},
               {path : 'patients', component: PatientsComponent},
               {path : 'payments', component: SignUpPageComponent},
