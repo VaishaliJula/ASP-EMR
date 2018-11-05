@@ -8,7 +8,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class LoginService {
   isUserLoggedIn: boolean;
-
   constructor(private router: Router, private httpClient: HttpClient) {
     this.isUserLoggedIn = false;
   }
@@ -18,19 +17,21 @@ export class LoginService {
     let queryParams = { email: formData.email, password: formData.password };
 
     this.httpClient.get(staffURL, { params: queryParams, observe: 'response' }).subscribe((res) => {
-
+    (Object.keys(res.body));
+  
       if (res.status == 200) {
         this.isUserLoggedIn = true;
         this.router.navigate(['/PatientDashboard', formData.email]);
-      }
-      else {
-        this.router.navigate(['/']);
-        console.log('Unauthorized access');
       }
     });
   }
 
   getUserLoggedIn() {
-    return this.isUserLoggedIn;
+    if (this.isUserLoggedIn) {
+      return true;
+    } 
+    this.router.navigate(['']);
+    console.log('Unauthorized access');
+    return false;
   }
 }
