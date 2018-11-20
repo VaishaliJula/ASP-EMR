@@ -1,0 +1,12 @@
+<div class="hours">
+  <div class="hour" *ngFor="let h of hourOptions" (click)="onSelect({hour: h})" [class.selected]="selection.hour === h">{{h}}</div>
+</div>
+<div class="minutes">
+  <div class="minute" *ngFor="let m of minuteOptions" (click)="onSelect({minute: m})" [class.selected]="selection.minute === m">{{m}}</div>
+</div>
+<div class="am-pm">
+  <div (click)="onSelect({amPM: 'AM'})" [class.selected]="selection.amPM === 'AM'">AM</div>
+  <div (click)="onSelect({amPM: 'PM'})" [class.selected]="selection.amPM === 'PM'">PM</div>
+</div>
+
+

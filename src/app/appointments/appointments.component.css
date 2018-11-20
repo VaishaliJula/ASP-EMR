@@ -1,0 +1,27 @@
+.book-appointment {
+  background-color: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+}
+
+.patient,
+.doctor {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.patient:hover,
+.doctor:hover {
+  background-color: rgba(32, 178, 170, 0.5);
+}
+
+.patient.selected,
+.doctor.selected {
+  background-color: #20b2aa;
+}
+
+.title {
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}

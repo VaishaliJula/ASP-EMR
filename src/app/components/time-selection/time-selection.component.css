@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+}
+
+.minutes,
+.am-pm {
+  margin-left: 1rem;
+}
+
+.hour,
+.minute,
+.am-pm > div {
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-align: center;
+  border-radius: 4px;
+  transition: 0.15s ease all;
+}
+
+.hour:hover,
+.am-pm > div:hover,
+.minute:hover {
+  background-color: rgba(32, 178, 170, 0.5);
+}
+
+
+.hour.selected,
+.am-pm > div.selected,
+.minute.selected {
+  background-color: #20b2aa;
+}

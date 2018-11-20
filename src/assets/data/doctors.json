@@ -1,0 +1,42 @@
+[
+  {
+    "email": "vignesh.chami@gmail.com",
+    "addressline1": "11213 McGee st",
+    "addressline2": 301,
+    "city": "Kansas City",
+    "dob": "1991-11-14",
+    "first_name": "chami",
+    "last_name": "chami",
+    "mobile_no": 9137776977,
+    "password": "chami",
+    "roleid": 1,
+    "state": "MO",
+    "zip_code": 64114
+  }, {
+    "email": "vignesh.c@gmail.com",
+    "addressline1": "11213 McGee st",
+    "addressline2": 301,
+    "city": "Kansas City",
+    "dob": "1991-11-14",
+    "first_name": "chami1",
+    "last_name": "chami",
+    "mobile_no": 9137776977,
+    "password": "chami",
+    "roleid": 1,
+    "state": "MO",
+    "zip_code": 64114
+  }, {
+    "email": "vignesh.chami@gmail.com",
+    "addressline1": "11213 McGee st",
+    "addressline2": 301,
+    "city": "Kansas City",
+    "dob": "1991-11-14",
+    "first_name": "chami2",
+    "last_name": "chami",
+    "mobile_no": 9137776977,
+    "password": "chami",
+    "roleid": 1,
+    "state": "MO",
+    "zip_code": 64114
+  }
+]

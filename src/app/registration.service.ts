@@ -1,5 +1,5 @@
+import { HttpService } from './http.service';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class RegistrationService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpService) { }
 
   registerPatient(formData){
-    let url ='http://localhost:8080/patient/addPatient/5225';
+    let url ='patient/addPatient/5225';
     this.http.post(url,
       {mrnum:formData.mrnum,
       firstName:formData.firstName,

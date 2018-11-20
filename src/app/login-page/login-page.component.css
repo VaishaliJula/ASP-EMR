@@ -1,28 +1,30 @@
 .loginRow {
-	padding: 120px;
-	max-width: 100%;
-    overflow-x: hidden;
+  min-height: calc(100vh - 50px);
+}
 
-}
 .advSection {
-	text-align: center;
+  text-align: center;
 }
+
 .noBullets {
-	list-style-type: none;
+  list-style-type: none;
 }
-h1{
-	color: #006699;
+
+h1 {
+  color: #006699;
 }
-.loginSection{
-	height: auto;
-	width: auto;
+
+.loginSection {
+  height: auto;
+  /* width: auto; */
 }
-h3{
-	padding-top: 10px;
-	color: #006699;
-	text-align: center;
-	}
+
+h3 {
+  color: #006699;
+  text-align: center;
+}
+
 .signInButton {
-	border-radius: 30px;
-	width: 130px;
+  border-radius: 30px;
+  width: 130px;
 }

@@ -1,48 +1,51 @@
-<div class="col-sm-2">
-	<div class="sidenav">
-		<img src="assets/me.jpg" class="rounded-circle" alt="UserImage" width="150" height="150">
-		<ul class="noBullets">
-			<label>Welcome</label>
-			<label>{{email}}</label>
-
-		</ul>
-		<a routerLink="registration">Registration</a>
-		<a routerLink="appointments">Appointments</a>
-		<a routerLink="patients">Patient Charts</a>
-		<a href="#">Payments</a>
-	</div>
-</div>
-<div class="col-sm-10">
-	<h4>
-		<label>My Dashboard</label>
-	</h4>
-	<!-- <br>
-		<div class="row">
-				<div class="col-sm-3">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">Today's Appointments</h5>
-							<h3 class="card-subtitle mb-2 text-muted">15</h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3"><div class="card">
-						<div class="card-body">
-							<h5 class="card-title">Checked In</h5>
-							<h3 class="card-subtitle mb-2 text-muted">10</h3>
-						</div>
-					</div></div>
-				<div class="col-sm-3"><div class="card">
-						<div class="card-body">
-							<h5 class="card-title">Checked Out</h5>
-							<h3 class="card-subtitle mb-2 text-muted">8</h3>
-						</div>
-					</div></div>
-				<div class="col-sm-3"><div class="card">
-						<div class="card-body">
-							<h5 class="card-title">Payments</h5>
-							<h3 class="card-subtitle mb-2 text-muted">1500$</h3>
-						</div>
-					</div></div> -->
-	<router-outlet></router-outlet>
+<div class="row m-0">
+  <div class="col-xl-2 col-lg-3 p-0">
+    <div class="sidenav">
+      <div class="text-center my-4">
+        <img src="assets/me.jpg" class="rounded-circle" alt="UserImage" width="150" height="150">
+      </div>
+      <div class="text-center">
+        <div class="mb-2">Welcome</div>
+        <div class="mb-4">{{email}}</div>
+      </div>
+      <a routerLink="registration">Registration</a>
+      <a routerLink="appointments">Appointments</a>
+      <a routerLink="patients">Patient Charts</a>
+      <a href="#">Payments</a>
+    </div>
+  </div>
+  <div class="col-xl-10 col-lg-9">
+    <h4>
+      <label>My Dashboard</label>
+    </h4>
+    <br>
+      <div class="row">
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Appointments</h5>
+                <h3 class="card-subtitle mb-2 text-muted">15</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3"><div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Checked In</h5>
+                <h3 class="card-subtitle mb-2 text-muted">10</h3>
+              </div>
+            </div></div>
+          <div class="col-sm-3"><div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Checked Out</h5>
+                <h3 class="card-subtitle mb-2 text-muted">8</h3>
+              </div>
+            </div></div>
+          <div class="col-sm-3"><div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Payments</h5>
+                <h3 class="card-subtitle mb-2 text-muted">1500$</h3>
+              </div>
+            </div></div>
+    <router-outlet></router-outlet>
+  </div>
 </div>

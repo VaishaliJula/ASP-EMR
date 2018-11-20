@@ -1,30 +1,39 @@
-<div class="row loginRow">
+<div class="container">
+  <div class="row loginRow align-items-center">
+    <div class="col-xs-12 col-lg-6 advSection">
+      <div>
+        <h1>Ambulatory EMR</h1>
+        <img src="assets/hospital-staff.jpg" alt="Ops!!!" width=200em height=200em>
+        <ul class="noBullets">
+          <li>Streamline the Patient Medicare Process</li>
+          <li>Regularize the Patient Ambulatory care time to 15 minutes</li>
+        </ul>
+      </div>
+    </div>
 
-	<div class="col-md-6 advSection">
-		<div>
-			<h1>Ambulatory EMR</h1>
-			<img src="assets/hospital-staff.jpg" alt="Ops!!!" width=200em height=200em>
-			<ul class="noBullets">
-				<li>Streamline the Patient Medicare Process</li>
-				<li>Regularize the Patient Ambulatory care time to 15 minutes</li>
-			</ul>
-		</div>
-
-	</div>
-
-	<div class="col-md-6 border loginSection">
-		<h3>{{loginTitle}}</h3>
-		<form [formGroup]="loginForm" (ngSubmit)="checkRole(loginForm.value)">
-			<label>Email</label>
-			<input type="text" placeholder="E-Mail" formControlName="email">
-			<label>Password</label>
-			<input type="password" placeholder="Password" formControlName="password">
-			<label><input type="checkbox"> Remember me</label>
-			<span>
-				<button type="submit" class="btn btn-danger btn-rounded waves-effect signInButton">Sign In
-				</button>
-				<a href=""> Forgot Password</a>
-			</span>
-		</form>
-	</div>
+    <div class="col-xs-12 col-lg-6 border loginSection py-4">
+      <h3>{{loginTitle}}</h3>
+      <form [formGroup]="loginForm" (ngSubmit)="checkRole(loginForm.value)">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" placeholder="E-Mail" formControlName="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" placeholder="Password" formControlName="password" class="form-control">
+        </div>
+        <div class="mt-2 d-flex justify-content-between">
+          <div class="form-check form-check-inline">
+            <input type="checkbox" class="form-check-input" id="remember-me">
+            <label for="remember-me" class="form-check-label">Remember me</label>
+          </div>
+          <a href=""> Forgot Password</a>
+        </div>
+        <div class="mt-2">
+          <button type="submit" class="btn btn-danger btn-rounded waves-effect signInButton">Sign In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
