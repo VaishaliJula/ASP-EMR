@@ -20,6 +20,7 @@ import { LoginService } from 'src/app/login.service';
 import { AuthGuard } from 'src/app/auth.guard';
 import { HttpService } from './http.service';
 import { TimeSelectionComponent } from './components/time-selection/time-selection.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TimeSelectionComponent } from './components/time-selection/time-selecti
     PatientDashboardComponent,
     PatientsComponent,
     AppointmentsComponent,
-    TimeSelectionComponent
+    TimeSelectionComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule, // 3rd party or external directives, components or pipes are declared here

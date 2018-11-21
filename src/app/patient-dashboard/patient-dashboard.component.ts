@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-
+import { ActivatedRoute } from '@angular/router';
+import { HttpService } from '../http.service';
+import { Appointment } from '../models/appointment.model';
 
 @Component({
   selector: 'app-patient-dashboard',
@@ -9,12 +10,15 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class PatientDashboardComponent implements OnInit {
   email;
-  constructor(private route : ActivatedRoute) { }
+  appointments: Appointment[];
+
+  constructor(private route: ActivatedRoute, private http: HttpService) {}
 
   ngOnInit() {
-   let emailParam = this.route.snapshot.params['email'];
-   this.email = emailParam;
-   console.log(this.email);
+    // const emailParam = this.route.snapshot.params['email'];
+    // this.email = emailParam;
+    this.http
+      .get('appointments/today')
+      .subscribe((res: Appointment[]) => this.appointments = res);
   }
-
 }

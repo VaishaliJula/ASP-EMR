@@ -1,0 +1,24 @@
+<div class="row m-0">
+  <div class="col-xl-2 col-lg-3 p-0">
+    <div class="sidenav">
+      <div class="text-center my-4">
+        <img
+          src="assets/me.jpg"
+          class="rounded-circle"
+          alt="UserImage"
+          width="150"
+          height="150"
+        />
+      </div>
+      <div class="text-center">
+        <div class="mb-2">Welcome</div>
+        <div class="mb-4">{{ email }}</div>
+      </div>
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/registration">Registration</a>
+      <a routerLink="/appointments">Appointments</a>
+      <a routerLink="patients">Patient Charts</a> <a href="#">Payments</a>
+    </div>
+  </div>
+  <div class="col-xl-10 col-lg-9"><router-outlet></router-outlet></div>
+</div>
