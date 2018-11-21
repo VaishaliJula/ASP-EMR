@@ -36,28 +36,77 @@
     </div>
   </div>
 </div>
-<h4>Apppointments for the Day</h4>
+<div class="row">
+  <div class="col-lg-4"><h4>Apppointments for the Day</h4></div>
+  <div class="col-lg-4"><h4>Checked In</h4></div>
+  <div class="col-lg-4"><h4>Checked Out</h4></div>
+</div>
+
 <br />
 <div class="row">
-  <table class="table">
+  <table class="table col-lg-4">
     <thead>
       <tr>
         <th>S. No</th>
         <th>Patient Name</th>
-        <th>Email</th>
+        <!-- <th>Email</th> -->
         <th>Slot Time</th>
-        <th>Comments</th>
+        <!-- <th>Comments</th> -->
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let appointment of appointments; let i = index">
+      <tr *ngFor="let appointment of pending; let i = index">
         <td>{{ i + 1 }}</td>
         <td>
           {{ appointment.patient.firstName }} {{ appointment.patient.lastName }}
         </td>
-        <td>{{ appointment.email }}</td>
+        <!-- <td>{{ appointment.email }}</td> -->
         <td>{{ appointment.time }}</td>
-        <td>{{ appointment.comments }}</td>
+        <!-- <td>{{ appointment.comments }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+  <table class="table col-lg-4">
+    <thead>
+      <tr>
+        <th>S. No</th>
+        <th>Patient Name</th>
+        <!-- <th>Email</th> -->
+        <th>Slot Time</th>
+        <!-- <th>Comments</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of checkedIn; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ appointment.patient.firstName }} {{ appointment.patient.lastName }}
+        </td>
+        <!-- <td>{{ appointment.email }}</td> -->
+        <td>{{ appointment.time }}</td>
+        <!-- <td>{{ appointment.comments }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+  <table class="table col-lg-4">
+    <thead>
+      <tr>
+        <th>S. No</th>
+        <th>Patient Name</th>
+        <!-- <th>Email</th> -->
+        <th>Slot Time</th>
+        <!-- <th>Comments</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of checkedOut; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ appointment.patient.firstName }} {{ appointment.patient.lastName }}
+        </td>
+        <!-- <td>{{ appointment.email }}</td> -->
+        <td>{{ appointment.time }}</td>
+        <!-- <td>{{ appointment.comments }}</td> -->
       </tr>
     </tbody>
   </table>

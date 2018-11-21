@@ -8,6 +8,7 @@ export interface Appointment {
   cheifComplaints: string;
   healthStatus: string;
   lastMedication: string;
+  status: string;
   patient: Patient;
   email: string;
 }

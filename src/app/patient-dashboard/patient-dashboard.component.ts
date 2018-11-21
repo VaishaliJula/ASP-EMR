@@ -11,14 +11,26 @@ import { Appointment } from '../models/appointment.model';
 export class PatientDashboardComponent implements OnInit {
   email;
   appointments: Appointment[];
+  pending: Appointment[];
+  checkedIn: Appointment[];
+  checkedOut: Appointment[];
 
   constructor(private route: ActivatedRoute, private http: HttpService) {}
 
   ngOnInit() {
     // const emailParam = this.route.snapshot.params['email'];
     // this.email = emailParam;
-    this.http
-      .get('appointments/today')
-      .subscribe((res: Appointment[]) => this.appointments = res);
+    this.http.get('appointments/today').subscribe((res: Appointment[]) => {
+      this.appointments = res;
+      this.pending = this.appointments.filter(
+        appointment => appointment.status === 'PENDING'
+      );
+      this.checkedIn = this.appointments.filter(
+        appointment => appointment.status === 'CHECKED_IN'
+      );
+      this.checkedOut = this.appointments.filter(
+        appointment => appointment.status === 'CHECKED_OUT'
+      );
+    });
   }
 }
