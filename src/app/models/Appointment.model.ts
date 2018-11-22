@@ -10,5 +10,6 @@ export interface Appointment {
   lastMedication: string;
   status: string;
   patient: Patient;
+  hospitalStaff: Doctor;
   email: string;
 }
