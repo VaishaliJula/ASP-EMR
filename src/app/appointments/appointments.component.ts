@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { Appointment } from '../models/appointment.model';
 
 @Component({
   selector: 'app-appointments',
@@ -17,6 +18,8 @@ export class AppointmentsComponent implements OnInit {
 
   doctors: any[];
   patients: any[];
+
+  appointments: Appointment[];
 
   /* Todo: HttpClient should be replaced with HttpService once the real api is available */
   constructor(private http: HttpClient) {}

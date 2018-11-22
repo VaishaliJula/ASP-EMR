@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -21,10 +21,48 @@ import { AuthGuard } from 'src/app/auth.guard';
 import { HttpService } from './http.service';
 import { TimeSelectionComponent } from './components/time-selection/time-selection.component';
 import { MainComponent } from './main/main.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatAutocompleteModule,
+  MatBadgeModule,
+  MatBottomSheetModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatTreeModule
+} from '@angular/material/';
 
 @NgModule({
   declarations: [
-    AppComponent, //our directives , components and pipes are declared here
+    AppComponent,
     SignUpPageComponent,
     LoginPageComponent,
     ProductListComponent,
@@ -36,14 +74,51 @@ import { MainComponent } from './main/main.component';
     MainComponent
   ],
   imports: [
-    BrowserModule, // 3rd party or external directives, components or pipes are declared here
-    FormsModule, AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatStepperModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+    FormsModule,
+    AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
     NgbDatepickerModule.forRoot()
   ],
-  providers: [RegistrationService,LoginService,AuthGuard, HttpService],
+  providers: [RegistrationService, LoginService, AuthGuard, HttpService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
