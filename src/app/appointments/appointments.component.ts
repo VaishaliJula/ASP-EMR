@@ -3,6 +3,9 @@ import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Appointment } from '../models/appointment.model';
+import { AppointmentService } from '../appointment.service';
+import { MatDialog } from '@angular/material';
+import { AddAppointmentComponent } from '../add-appointment/add-appointment.component';
 
 @Component({
   selector: 'app-appointments',
@@ -19,12 +22,28 @@ export class AppointmentsComponent implements OnInit {
   doctors: any[];
   patients: any[];
 
+  currentSelectedDate;
+
   appointments: Appointment[];
 
   /* Todo: HttpClient should be replaced with HttpService once the real api is available */
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private service: AppointmentService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {}
+
+  findAppointments() {
+    this.service
+      .getAppointmentsForDate(this.currentSelectedDate)
+      .subscribe((res: Appointment[]) => (this.appointments = res));
+  }
+
+  openAddAppointment() {
+    this.dialog.open(AddAppointmentComponent);
+  }
 
   onDateSelect(date: NgbDate) {
     console.log(date);

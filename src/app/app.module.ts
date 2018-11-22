@@ -59,6 +59,7 @@ import {
   MatTooltipModule,
   MatTreeModule
 } from '@angular/material/';
+import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import {
     PatientsComponent,
     AppointmentsComponent,
     TimeSelectionComponent,
-    MainComponent
+    MainComponent,
+    AddAppointmentComponent
   ],
   imports: [
     BrowserModule,
@@ -119,6 +121,7 @@ import {
     NgbDatepickerModule.forRoot()
   ],
   providers: [RegistrationService, LoginService, AuthGuard, HttpService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddAppointmentComponent]
 })
 export class AppModule {}
