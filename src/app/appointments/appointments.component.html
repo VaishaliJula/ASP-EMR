@@ -59,8 +59,18 @@
         <td>{{ appointment.status }}</td>
         <td colspan="2">
           <div class="row">
-            <button class="btn col-lg-6 btn-primary">Add SOAP</button>
-            <button class="btn col-lg-6 btn-warning">Update</button>
+            <button
+              class="btn col-lg-6 btn-primary"
+              (click)="openSoapNoteDialog(appointment.patient.mrnum)"
+            >
+              Add SOAP
+            </button>
+            <button
+              (click)="openUpdateAppointment(appointment.appId)"
+              class="btn col-lg-6 btn-warning"
+            >
+              Update
+            </button>
           </div>
         </td>
       </tr>

@@ -60,6 +60,9 @@ import {
   MatTreeModule
 } from '@angular/material/';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
+import { AddSoapNoteComponent } from './add-soap-note/add-soap-note.component';
+import { UpdateAppointmentComponent } from './update-appointment/update-appointment.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -73,11 +76,14 @@ import { AddAppointmentComponent } from './add-appointment/add-appointment.compo
     AppointmentsComponent,
     TimeSelectionComponent,
     MainComponent,
-    AddAppointmentComponent
+    AddAppointmentComponent,
+    AddSoapNoteComponent,
+    UpdateAppointmentComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -122,6 +128,10 @@ import { AddAppointmentComponent } from './add-appointment/add-appointment.compo
   ],
   providers: [RegistrationService, LoginService, AuthGuard, HttpService],
   bootstrap: [AppComponent],
-  entryComponents: [AddAppointmentComponent]
+  entryComponents: [
+    AddAppointmentComponent,
+    AddSoapNoteComponent,
+    UpdateAppointmentComponent
+  ]
 })
 export class AppModule {}
