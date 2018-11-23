@@ -55,10 +55,10 @@ export class AppointmentsComponent implements OnInit {
     });
   }
 
-  openUpdateAppointment(appId: number) {
+  openUpdateAppointment(app: Appointment) {
     this.dialog.open(UpdateAppointmentComponent, {
       data: {
-        appId: appId
+        appointment: app
       }
     });
   }

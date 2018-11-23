@@ -62,7 +62,7 @@ import {
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
 import { AddSoapNoteComponent } from './add-soap-note/add-soap-note.component';
 import { UpdateAppointmentComponent } from './update-appointment/update-appointment.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { PatientChartsComponent } from './patient-charts/patient-charts.component';
 
 @NgModule({
   declarations: [
@@ -78,12 +78,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MainComponent,
     AddAppointmentComponent,
     AddSoapNoteComponent,
-    UpdateAppointmentComponent
+    UpdateAppointmentComponent,
+    PatientChartsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,

@@ -1,3 +1,93 @@
-<p>
-  update-appointment works!
-</p>
+<div class="row">
+  <mat-form-field class="col-lg-6">
+    <input
+      disabled
+      matInput
+      [value]="appointment.date"
+      [matDatepicker]="picker"
+      placeholder="Choose a date"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-select
+    disabled
+    class="col-lg-6"
+    placeholder="Slot"
+    [value]="appointment.time"
+    name="slot"
+  >
+    <mat-option *ngFor="let slot of slots" [value]="slot">
+      {{ slot }}
+    </mat-option>
+  </mat-select>
+</div>
+<div class="row">
+  <mat-select
+    placeholder="Doctor's Name"
+    [(ngModel)]="selectedDoctorId"
+    name="item"
+    disabled
+  >
+    <mat-option *ngFor="let doctor of doctors" [value]="doctor.email">
+      {{ appointment.doctor.firstName }} {{ appointment.doctor.lastName }}
+    </mat-option>
+  </mat-select>
+</div>
+<div class="row">
+  <mat-form-field>
+    <input
+      matInput
+      disabled
+      placeholder="Medical Record Number"
+      [value]="appointment.patient.mrnum"
+    />
+  </mat-form-field>
+</div>
+<div class="row">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Patient Name"
+      [value]="appointment.patient.firstName"
+      disabled
+    />
+  </mat-form-field>
+</div>
+<div class="row">
+  <mat-form-field>
+    <textarea
+      [value]="appointment.cheifComplaints"
+      matInput
+      placeholder="Cheif Complaints"
+    ></textarea>
+  </mat-form-field>
+</div>
+<div class="row">
+  <mat-form-field>
+    <textarea
+      matInput
+      [value]="appointment.comments"
+      placeholder="Comments"
+    ></textarea>
+  </mat-form-field>
+</div>
+<div class="row">
+  <mat-form-field>
+    <textarea
+      matInput
+      [value]="appointment.healthStatus"
+      placeholder="Health Condition"
+    ></textarea>
+  </mat-form-field>
+</div>
+<div class="row">
+  <mat-form-field>
+    <textarea
+      matInput
+      [value]="appointment.lastMedication"
+      placeholder="Medication"
+    ></textarea>
+  </mat-form-field>
+</div>
+<div class="row"><button mat-raised-button>Update!</button></div>
