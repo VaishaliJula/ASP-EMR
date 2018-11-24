@@ -1,168 +1,294 @@
 <head>
-    <title>Page Title</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
- <body>
- <h3 style="text-align:center">Welcome to Registration</h3>
- <form [formGroup]="registrationForm" (ngSubmit)="addPatient(registrationForm.value)">
- <div class="container-fluid">
-  <div class="col-lg-12 well">
+</head>
 
-    <div class="row">
-      <div class="col-sm-3">
-        <label>Salutation</label><br>
-        <select formControlName="salutation">
-            <option value="none">None</option>
-            <option value="Mr">Mr</option>
-            <option value="Ms">Ms</option>
-            <option value="Mrs">Mrs</option>
-          </select>
-      </div>
-      <div class="col-sm-3">
-          <label>FirstName</label><br>
-          <input type="text" placeholder="FirstName" formControlName="firstName">
-       </div>
-      <div class="col-sm-3">
-          <label>LastName</label><br>
-          <input type="text" placeholder="LastName" formControlName="lastName">      
-      </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-sm-3">
-          <label>Gender</label><br>
-          <input type="text" placeholder="Gender" formControlName="gender">
-        </div>
-        <div class="col-sm-3">
-            <label>Date of Birth</label>
-            <br>
-            <input type="text" placeholder="DOB" formControlName="dob" bsDatepicker>
-        </div>
-        <div class="col-sm-3">
-            <label>Race</label><br>
-            <input type="text" placeholder="Race" formControlName="race">      
-        </div>
-        <div class="col-sm-3">
-            <label>Ethnicity</label><br>
-            <input type="text" placeholder="Ethnicity" formControlName="ethnicity">      
-        </div>
-      </div>
-      <br>
-      <div class="row">
-          <div class="col-sm-3">
-            <label>Occupation</label><br>
-            <input type="text" placeholder="Occupation" formControlName="occupation">
-          </div>
-          <div class="col-sm-3">
-              <label>SSN</label><br>
-              <input type="text" placeholder="SSN" formControlName="ssn">
-           </div>
-           <div class="col-sm-3">
-              <label>Gender Identity</label><br>
-              <input type="text" placeholder="Gender Identity" formControlName="genderIdentity">      
-          </div>
-          <div class="col-sm-3">
-              <label>Sex Orientation</label><br>
-              <input type="text" placeholder="Sex Orientation" formControlName="sexOrientation">      
-          </div>
-        </div>
-  </div>
- </div>
- <div class="container-fluid">
-    <div class="col-lg-12 well">
-      <div class="row">
-          <div class="col-sm-3">
-              <label>Preferred Language</label><br>
-              <input type="text" placeholder="PreferredLanguage" formControlName="preferredLanguage"> 
-           </div>
-          <div class="col-sm-3">
-              <label>Communication Preferrence</label><br>
-              <input type="text" placeholder="Communication Preferrence" formControlName="communicationPreferrence">      
-          </div>
-          <div class="col-sm-3">
-              <label>Marital Status</label><br>
-              <input type="text" placeholder="Marital Status" formControlName="maritalStatus">      
-          </div>
-          <div class="col-sm-3">
-              <label>Disability Status</label><br>
-              <input type="text" placeholder="Disability Status" formControlName="disabilityStatus">      
-          </div>
-      </div>
-      <br>
-      <div class="row">
-          <div class="col-sm-3">
-            <label>Address Line 1</label><br>
-            <input type="text" placeholder="Address Line 1" formControlName="address1">
-          </div>
-          <div class="col-sm-3">
-              <label>Address Line 2</label><br>
-              <input type="text" placeholder="Address Line 2" formControlName="address2">
-           </div>
-           <div class="col-sm-3">
-              <label>Zip Code</label><br>
-              <input type="text" placeholder="Zip Code" formControlName="zip">      
-          </div>
-          <div class="col-sm-3">
-              <label>City</label><br>
-              <input type="text" placeholder="City" formControlName="city">      
-          </div>
-        </div>
-        <br>
+<body>
+    <h3 style="text-align:center">Welcome to Registration</h3>
+    <form [formGroup]="registrationForm" (ngSubmit)="addPatient(registrationForm.value)">
         <div class="row">
             <div class="col-sm-3">
-                <label>State</label><br>
-                <input type="text" placeholder="State" formControlName="state">
-             </div>
-            <div class="col-sm-3">
-                <label>Home Telephone</label><br>
-                <input type="text" placeholder="Home Telephone" formControlName="homeTelephone">      
+                <label>Salutation</label>
+                <br>
+                <select formControlName="salutation">
+                    <option value="none">None</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Mrs">Mrs</option>
+                </select>
             </div>
             <div class="col-sm-3">
-                <label>Mobile Number</label><br>
-                <input type="text" placeholder="Mobile Number" formControlName="mobileNumber">      
+                <label for="firstName">FirstName</label>
+                <br>
+                <input type="text" id="firstName" formControlName="firstName">
+                <div *ngIf="registrationForm.controls['firstName'].touched && !registrationForm.controls['firstName'].valid">
+                    <span *ngIf="registrationForm.controls['firstName'].hasError('required') ">
+                        *Please enter FirstName
+                    </span>
+                </div>
             </div>
             <div class="col-sm-3">
-                <label>First Visit</label><br>
-                <input type="text" placeholder="First Visit" formControlName="firstVisit" bsDatepicker> 
+                <label>LastName</label>
+                <br>
+                <input type="text" formControlName="lastName">
+                <div *ngIf="registrationForm.controls['lastName'].touched && !registrationForm.controls['lastName'].valid">
+                    <span *ngIf="registrationForm.controls['lastName'].hasError('required') ">
+                        *Please enter lastName
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>First Visit</label>
+                <br>
+                <input type="text" formControlName="firstVisit" bsDatepicker>
             </div>
         </div>
-    </div>
-  </div>
-  <div class="container-fluid">
-      <div class="col-lg-12 well">
-          <div class="row">
-              <div class="col-sm-4">
-                  <label>Kin_First</label><br>
-                  <input type="text" placeholder="Kin_First" formControlName="kinFirst">
-               </div>
-              <div class="col-sm-4">
-                  <label>Kin_Last</label><br>
-                  <input type="text" placeholder="Kin_Last" formControlName="kinLast">      
-              </div>
-              <div class="col-sm-4">
-                  <label>Kin_Address</label><br>
-                  <input type="text" placeholder="Kin_Address" formControlName="kinAddress">      
-              </div>
-            
-          </div>
-          <br>
-          <div class="row">
-              <div class="col-sm-4">
-                  <label>Kin_Telephone</label><br>
-                  <input type="text" placeholder="Kin_Telephone" formControlName="kinTelephone">      
-              </div>
-              <div class="col-sm-4">
-                  <label>Relationship</label><br>
-                  <input type="text" placeholder="Relationship" formControlName="relationship">      
-              </div>
-          </div>
-      </div>
-  </div>
-  <div id="submit">
-      <input type="submit" class="btn btn-info" [disabled] = "!registrationForm.valid">&nbsp;&nbsp;&nbsp;&nbsp;
-      
-  </div>
-  </form>
-<br>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Gender</label>
+                <br>
+                <input type="text" formControlName="gender">
+                <div *ngIf="registrationForm.controls['gender'].touched && !registrationForm.controls['gender'].valid">
+                    <span *ngIf="registrationForm.controls['gender'].hasError('required') ">
+                        *Please enter gender
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Date of Birth</label>
+                <br>
+                <input type="text" formControlName="dob" bsDatepicker>
+                <div *ngIf="registrationForm.controls['dob'].touched && !registrationForm.controls['dob'].valid">
+                    <span *ngIf="registrationForm.controls['dob'].hasError('required') ">
+                        *Please enter dob
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Race</label>
+                <br>
+                <input type="text" formControlName="race">
+                <div *ngIf="registrationForm.controls['race'].touched && !registrationForm.controls['race'].valid">
+                    <span *ngIf="registrationForm.controls['race'].hasError('required') ">
+                        *Please enter Race
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Ethnicity</label>
+                <br>
+                <input type="text" formControlName="ethnicity">
+                <div *ngIf="registrationForm.controls['ethnicity'].touched && !registrationForm.controls['ethnicity'].valid">
+                    <span *ngIf="registrationForm.controls['ethnicity'].hasError('required') ">
+                        *Please enter ethnicity
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Occupation</label>
+                <br>
+                <input type="text" formControlName="occupation">
+                <div *ngIf="registrationForm.controls['occupation'].touched && !registrationForm.controls['occupation'].valid">
+                    <span *ngIf="registrationForm.controls['occupation'].hasError('required') ">
+                        *Please enter Occupation
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>SSN</label>
+                <br>
+                <input type="text" formControlName="ssn">
+                <div *ngIf="registrationForm.controls['ssn'].touched && !registrationForm.controls['ssn'].valid">
+                    <span *ngIf="registrationForm.controls['ssn'].hasError('required') ">
+                        *Please enter SSN
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Gender Identity</label>
+                <br>
+                <input type="text" formControlName="genderIdentity">
+                <div *ngIf="registrationForm.controls['genderIdentity'].touched && !registrationForm.controls['genderIdentity'].valid">
+                    <span *ngIf="registrationForm.controls['genderIdentity'].hasError('required') ">
+                        *Please enter genderIdentity
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Sex Orientation</label>
+                <br>
+                <input type="text" formControlName="sexOrientation">
+                <div *ngIf="registrationForm.controls['sexOrientation'].touched && !registrationForm.controls['sexOrientation'].valid">
+                    <span *ngIf="registrationForm.controls['sexOrientation'].hasError('required') ">
+                        *Please enter sexOrientation
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Preferred Language</label>
+                <br>
+                <input type="text" formControlName="preferredLanguage">
+                <div *ngIf="registrationForm.controls['preferredLanguage'].touched && !registrationForm.controls['preferredLanguage'].valid">
+                    <span *ngIf="registrationForm.controls['preferredLanguage'].hasError('required') ">
+                        *Please enter Language
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Communication Preferrence</label>
+                <br>
+                <input type="text" formControlName="communicationPreferrence">
+                <div *ngIf="registrationForm.controls['communicationPreferrence'].touched && !registrationForm.controls['communicationPreferrence'].valid">
+                    <span *ngIf="registrationForm.controls['communicationPreferrence'].hasError('required') ">
+                        *Please enter communicationPreferrence
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Marital Status</label>
+                <br>
+                <input type="text" formControlName="maritalStatus">
+                <div *ngIf="registrationForm.controls['maritalStatus'].touched && !registrationForm.controls['maritalStatus'].valid">
+                    <span *ngIf="registrationForm.controls['maritalStatus'].hasError('required') ">
+                        *Please enter MaritalStatus
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Disability Status</label>
+                <br>
+                <input type="text" formControlName="disabilityStatus">
+                <div *ngIf="registrationForm.controls['disabilityStatus'].touched && !registrationForm.controls['disabilityStatus'].valid">
+                    <span *ngIf="registrationForm.controls['disabilityStatus'].hasError('required') ">
+                        *Please enter disabilityStatus
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Address Line 1</label>
+                <br>
+                <input type="text" formControlName="address1">
+                <div *ngIf="registrationForm.controls['address1'].touched && !registrationForm.controls['address1'].valid">
+                    <span *ngIf="registrationForm.controls['address1'].hasError('required') ">
+                        *Please enter address1
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Address Line 2</label>
+                <br>
+                <input type="text" formControlName="address2">
+            </div>
+            <div class="col-sm-3">
+                <label>Zip Code</label>
+                <br>
+                <input type="text" formControlName="zip">
+                <div *ngIf="registrationForm.controls['zip'].touched && !registrationForm.controls['zip'].valid">
+                    <span *ngIf="registrationForm.controls['zip'].hasError('required') ">
+                        *Please enter zip
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>City</label>
+                <br>
+                <input type="text" formControlName="city">
+                <div *ngIf="registrationForm.controls['city'].touched && !registrationForm.controls['city'].valid">
+                    <span *ngIf="registrationForm.controls['city'].hasError('required') ">
+                        *Please enter city
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label>State</label>
+                <br>
+                <input type="text" formControlName="state">
+                <div *ngIf="registrationForm.controls['state'].touched && !registrationForm.controls['state'].valid">
+                    <span *ngIf="registrationForm.controls['state'].hasError('required') ">
+                        *Please enter State
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Home Telephone</label>
+                <br>
+                <input type="text" formControlName="homeTelephone">
+            </div>
+            <div class="col-sm-3">
+                <label>Mobile Number</label>
+                <br>
+                <input type="text" formControlName="mobileNumber">
+                <div *ngIf="registrationForm.controls['mobileNumber'].touched && !registrationForm.controls['mobileNumber'].valid">
+                    <span *ngIf="registrationForm.controls['mobileNumber'].hasError('required') ">
+                        *Please enter mobileNumber
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Guardian FirstName</label>
+                <br>
+                <input type="text" formControlName="kinFirst">
+                <div *ngIf="registrationForm.controls['kinFirst'].touched && !registrationForm.controls['kinFirst'].valid">
+                    <span *ngIf="registrationForm.controls['kinFirst'].hasError('required') ">
+                        *Please enter kinFirst
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-sm-3">
+                <label>Guardian LastName</label>
+                <br>
+                <input type="text" formControlName="kinLast">
+                <div *ngIf="registrationForm.controls['kinLast'].touched && !registrationForm.controls['kinLast'].valid">
+                    <span *ngIf="registrationForm.controls['kinLast'].hasError('required') ">
+                        *Please enter kinLast
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Guardian Address</label>
+                <br>
+                <input type="text" formControlName="kinAddress">
+            </div>
+            <div class="col-sm-3">
+                <label>Guardian Telephone</label>
+                <br>
+                <input type="text" formControlName="kinTelephone">
+                <div *ngIf="registrationForm.controls['kinTelephone'].touched && !registrationForm.controls['kinTelephone'].valid">
+                    <span *ngIf="registrationForm.controls['kinTelephone'].hasError('required') ">
+                        *Please enter FirstName
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Relationship</label>
+                <br>
+                <input type="text" formControlName="relationship">
+                <div *ngIf="registrationForm.controls['relationship'].touched && !registrationForm.controls['relationship'].valid">
+                    <span *ngIf="registrationForm.controls['relationship'].hasError('required') ">
+                        *Please enter relationship
+                    </span>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div id="submit">
+            <input type="submit" class="btn btn-info">&nbsp;&nbsp;&nbsp;&nbsp;
+
+        </div>
+    </form>
+    <br>
 </body>

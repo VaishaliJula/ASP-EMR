@@ -1,4 +1,5 @@
 import { Patient } from './Patient.model';
+import {Doctor} from './Doctor.model';
 
 export interface Appointment {
   appId: number;

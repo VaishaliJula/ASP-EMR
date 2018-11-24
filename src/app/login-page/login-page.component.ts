@@ -26,7 +26,15 @@ export class LoginPageComponent implements OnInit {
     
   }
   checkRole(value){
-    this.service.validateLoginStaff(value);
-    this.loginForm.reset();
+    if (this.loginForm.invalid) {
+      alert('Please enter Email and Password');
+      console.log(this.loginForm.value);
+    }
+    else {
+      this.service.validateLoginStaff(value);
+      alert("Form submitted");
+      this.loginForm.reset();
+      
+    }
   }
 }
