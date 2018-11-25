@@ -3,7 +3,7 @@
     <input
       disabled
       matInput
-      [value]="appointment.date"
+      [(ngModel)]="appointment.date"
       [matDatepicker]="picker"
       placeholder="Choose a date"
     />
@@ -14,7 +14,7 @@
     disabled
     class="col-lg-6"
     placeholder="Slot"
-    [value]="appointment.time"
+    [(ngModel)]="appointment.time"
     name="slot"
   >
     <mat-option *ngFor="let slot of slots" [value]="slot">
@@ -40,7 +40,7 @@
       matInput
       disabled
       placeholder="Medical Record Number"
-      [value]="appointment.patient.mrnum"
+      [(ngModel)]="appointment.patient.mrnum"
     />
   </mat-form-field>
 </div>
@@ -49,7 +49,7 @@
     <input
       matInput
       placeholder="Patient Name"
-      [value]="appointment.patient.firstName"
+      [(ngModel)]="appointment.patient.firstName"
       disabled
     />
   </mat-form-field>
@@ -57,7 +57,7 @@
 <div class="row">
   <mat-form-field>
     <textarea
-      [value]="appointment.cheifComplaints"
+      [(ngModel)]="appointment.chiefComplaints"
       matInput
       placeholder="Cheif Complaints"
     ></textarea>
@@ -67,7 +67,7 @@
   <mat-form-field>
     <textarea
       matInput
-      [value]="appointment.comments"
+      [(ngModel)]="appointment.comments"
       placeholder="Comments"
     ></textarea>
   </mat-form-field>
@@ -76,7 +76,7 @@
   <mat-form-field>
     <textarea
       matInput
-      [value]="appointment.healthStatus"
+      [(ngModel)]="appointment.healthStatus"
       placeholder="Health Condition"
     ></textarea>
   </mat-form-field>
@@ -85,9 +85,22 @@
   <mat-form-field>
     <textarea
       matInput
-      [value]="appointment.lastMedication"
+      [(ngModel)]="appointment.lastMedication"
       placeholder="Medication"
     ></textarea>
   </mat-form-field>
 </div>
-<div class="row"><button mat-raised-button>Update!</button></div>
+<div class="row">
+  <mat-select
+    placeholder="Appointment Status"
+    [(ngModel)]="appointment.status"
+    name="slot"
+  >
+    <mat-option *ngFor="let status of AppStatus" [value]="status">
+      {{ status }}
+    </mat-option>
+  </mat-select>
+</div>
+<div class="row">
+  <button (click)="update()" mat-raised-button>Update!</button>
+</div>

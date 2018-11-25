@@ -12,7 +12,7 @@
   <mat-select
     class="col-lg-6"
     placeholder="Slot"
-    [(ngModel)]="selectedValue"
+    [(ngModel)]="selectedSlot"
     name="slot"
   >
     <mat-option *ngFor="let slot of slots" [value]="slot">
@@ -24,6 +24,7 @@
   <mat-select
     placeholder="Doctor's Name"
     [(ngModel)]="selectedDoctorId"
+    (selectionChange)="checkAppointmnetValidity()"
     name="item"
   >
     <mat-option *ngFor="let doctor of doctors" [value]="doctor.email">
@@ -49,17 +50,27 @@
 </div>
 <div class="row">
   <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Cheif Complaints"></textarea>
+    <textarea
+      matInput
+      [(ngModel)]="chiefComplaint"
+      placeholder="Chief Complaints"
+    ></textarea>
   </mat-form-field>
 </div>
 <div class="row">
   <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Comments"></textarea>
+    <textarea matInput [(ngModel)]="comments" placeholder="Comments"></textarea>
   </mat-form-field>
 </div>
 <div class="row">
   <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Health Condition"></textarea>
+    <textarea
+      matInput
+      [(ngModel)]="healthCondition"
+      placeholder="Health Condition"
+    ></textarea>
   </mat-form-field>
 </div>
-<div class="row"><button mat-raised-button>Book!</button></div>
+<div class="row">
+  <button mat-raised-button (click)="createAppointment()">Book!</button>
+</div>

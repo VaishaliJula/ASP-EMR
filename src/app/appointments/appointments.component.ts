@@ -44,7 +44,8 @@ export class AppointmentsComponent implements OnInit {
   }
 
   openAddAppointment() {
-    this.dialog.open(AddAppointmentComponent);
+    const dialogRef = this.dialog.open(AddAppointmentComponent);
+    dialogRef.afterClosed().subscribe(_ => this.findAppointments());
   }
 
   openSoapNoteDialog(mrNum: number) {
@@ -56,11 +57,12 @@ export class AppointmentsComponent implements OnInit {
   }
 
   openUpdateAppointment(app: Appointment) {
-    this.dialog.open(UpdateAppointmentComponent, {
+    const dialogRef = this.dialog.open(UpdateAppointmentComponent, {
       data: {
         appointment: app
       }
     });
+    dialogRef.afterClosed().subscribe(_ => this.findAppointments());
   }
 
   onDateSelect(date: NgbDate) {
