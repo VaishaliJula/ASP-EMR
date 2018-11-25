@@ -24,6 +24,7 @@ export class AddAppointmentComponent implements OnInit {
   chiefComplaint;
   comments;
   healthCondition;
+  medication;
 
   findPatient() {
     this.patientService
@@ -91,7 +92,7 @@ export class AddAppointmentComponent implements OnInit {
       comments: this.comments,
       chiefComplaints: this.chiefComplaint,
       healthStatus: this.healthCondition,
-      lastMedication: '',
+      lastMedication: this.medication,
       status: 'PENDING',
       patient: {
         mrnum: 1

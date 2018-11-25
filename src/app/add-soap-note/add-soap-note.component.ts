@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { SoapService } from '../soap.service';
+import { Soap } from '../models/Soap.model';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-add-soap-note',
@@ -8,8 +11,33 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class AddSoapNoteComponent implements OnInit {
   mrNum;
-  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
+  subjective;
+  objective;
+  assessment;
+  plan;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) data: any,
+    private soapService: SoapService,
+    private loginService: LoginService
+  ) {
     this.mrNum = data.mrNum;
+  }
+
+  addSoap() {
+    const soap: Soap = {
+      assessmentNote: this.assessment,
+      objectiveNote: this.objective,
+      planNote: this.plan,
+      subjectiveNote: this.subjective,
+      patient: {
+        mrnum: this.mrNum
+      },
+      hospitalStaff: {
+        email: this.loginService.getLoggedInUserEmail()
+      }
+    };
+    this.soapService.addSoap(soap).subscribe();
   }
 
   ngOnInit() {}

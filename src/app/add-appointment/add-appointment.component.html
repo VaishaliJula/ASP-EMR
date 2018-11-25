@@ -72,5 +72,14 @@
   </mat-form-field>
 </div>
 <div class="row">
+  <mat-form-field class="example-full-width">
+    <textarea
+      matInput
+      [(ngModel)]="medication"
+      placeholder="Medication"
+    ></textarea>
+  </mat-form-field>
+</div>
+<div class="row">
   <button mat-raised-button (click)="createAppointment()">Book!</button>
 </div>

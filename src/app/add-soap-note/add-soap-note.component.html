@@ -8,16 +8,28 @@
     />
   </mat-form-field>
   <mat-form-field fxFlex>
-    <textarea matInput placeholder="Subjective Note"></textarea>
+    <textarea
+      matInput
+      [(ngModel)]="subjective"
+      placeholder="Subjective"
+    ></textarea>
   </mat-form-field>
   <mat-form-field fxFlex>
-    <textarea matInput placeholder="Objective Note"></textarea>
+    <textarea
+      matInput
+      [(ngModel)]="objective"
+      placeholder="Objective"
+    ></textarea>
   </mat-form-field>
   <mat-form-field fxFlex>
-    <textarea matInput placeholder="Assement Note"></textarea>
+    <textarea
+      matInput
+      [(ngModel)]="assessment"
+      placeholder="Assessment"
+    ></textarea>
   </mat-form-field>
   <mat-form-field fxFlex>
-    <textarea matInput placeholder="Plan Note"></textarea>
+    <textarea matInput [(ngModel)]="plan" placeholder="Plan"></textarea>
   </mat-form-field>
-  <button fxFlex mat-raised-button>Add SOAP</button>
+  <button fxFlex mat-raised-button (click)="addSoap()">Add SOAP</button>
 </div>
