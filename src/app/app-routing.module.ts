@@ -8,6 +8,7 @@ import { AppointmentsComponent } from 'src/app/appointments/appointments.compone
 import { PatientsComponent } from 'src/app/patients/patients.component';
 import { AuthGuard } from 'src/app/auth.guard';
 import { MainComponent } from './main/main.component';
+import { PatientChartsComponent } from './patient-charts/patient-charts.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
@@ -20,7 +21,7 @@ const routes: Routes = [
       { path: 'dashboard', component: PatientDashboardComponent },
       { path: 'registration', component: SignUpPageComponent },
       { path: 'appointments', component: AppointmentsComponent },
-      { path: 'patients', component: PatientsComponent },
+      { path: 'patients', component: PatientChartsComponent },
       { path: 'payments', component: SignUpPageComponent },
       { path: 'contact', component: SignUpPageComponent }
     ]

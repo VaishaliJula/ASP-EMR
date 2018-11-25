@@ -6,6 +6,8 @@ import { Appointment } from '../models/appointment.model';
 import { AppointmentService } from '../appointment.service';
 import { MatDialog } from '@angular/material';
 import { AddAppointmentComponent } from '../add-appointment/add-appointment.component';
+import { AddSoapNoteComponent } from '../add-soap-note/add-soap-note.component';
+import { UpdateAppointmentComponent } from '../update-appointment/update-appointment.component';
 
 @Component({
   selector: 'app-appointments',
@@ -42,7 +44,25 @@ export class AppointmentsComponent implements OnInit {
   }
 
   openAddAppointment() {
-    this.dialog.open(AddAppointmentComponent);
+    const dialogRef = this.dialog.open(AddAppointmentComponent);
+    dialogRef.afterClosed().subscribe(_ => this.findAppointments());
+  }
+
+  openSoapNoteDialog(mrNum: number) {
+    this.dialog.open(AddSoapNoteComponent, {
+      data: {
+        mrNum: mrNum
+      }
+    });
+  }
+
+  openUpdateAppointment(app: Appointment) {
+    const dialogRef = this.dialog.open(UpdateAppointmentComponent, {
+      data: {
+        appointment: app
+      }
+    });
+    dialogRef.afterClosed().subscribe(_ => this.findAppointments());
   }
 
   onDateSelect(date: NgbDate) {

@@ -1,0 +1,23 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-form-field fxFlex>
+    <input
+      matInput
+      placeholder="Medical Record Number"
+      [(ngModel)]="mrNum"
+      disabled
+    />
+  </mat-form-field>
+  <mat-form-field fxFlex>
+    <textarea matInput placeholder="Subjective Note"></textarea>
+  </mat-form-field>
+  <mat-form-field fxFlex>
+    <textarea matInput placeholder="Objective Note"></textarea>
+  </mat-form-field>
+  <mat-form-field fxFlex>
+    <textarea matInput placeholder="Assement Note"></textarea>
+  </mat-form-field>
+  <mat-form-field fxFlex>
+    <textarea matInput placeholder="Plan Note"></textarea>
+  </mat-form-field>
+  <button fxFlex mat-raised-button>Add SOAP</button>
+</div>

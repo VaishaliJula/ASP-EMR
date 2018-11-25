@@ -1,8 +1,9 @@
 <div class="row">
   <mat-form-field class="col-lg-6">
     <input
+      disabled
       matInput
-      [(ngModel)]="currentSelectedDate"
+      [(ngModel)]="appointment.date"
       [matDatepicker]="picker"
       placeholder="Choose a date"
     />
@@ -10,9 +11,10 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-select
+    disabled
     class="col-lg-6"
     placeholder="Slot"
-    [(ngModel)]="selectedSlot"
+    [(ngModel)]="appointment.time"
     name="slot"
   >
     <mat-option *ngFor="let slot of slots" [value]="slot">
@@ -24,53 +26,81 @@
   <mat-select
     placeholder="Doctor's Name"
     [(ngModel)]="selectedDoctorId"
-    (selectionChange)="checkAppointmnetValidity()"
     name="item"
+    disabled
   >
     <mat-option *ngFor="let doctor of doctors" [value]="doctor.email">
-      {{ doctor.firstName }} {{ doctor.lastName }}
+      {{ appointment.doctor.firstName }} {{ appointment.doctor.lastName }}
     </mat-option>
   </mat-select>
 </div>
 <div class="row">
   <mat-form-field>
-    <input matInput placeholder="Medical Record Number" [(ngModel)]="mrNum" />
+    <input
+      matInput
+      disabled
+      placeholder="Medical Record Number"
+      [(ngModel)]="appointment.patient.mrnum"
+    />
   </mat-form-field>
-  <button mat-button (click)="findPatient()">Search</button>
 </div>
 <div class="row">
   <mat-form-field>
     <input
       matInput
       placeholder="Patient Name"
-      [(ngModel)]="patientName"
+      [(ngModel)]="appointment.patient.firstName"
       disabled
     />
   </mat-form-field>
 </div>
 <div class="row">
-  <mat-form-field class="example-full-width">
+  <mat-form-field>
     <textarea
+      [(ngModel)]="appointment.chiefComplaints"
       matInput
-      [(ngModel)]="chiefComplaint"
-      placeholder="Chief Complaints"
+      placeholder="Cheif Complaints"
     ></textarea>
   </mat-form-field>
 </div>
 <div class="row">
-  <mat-form-field class="example-full-width">
-    <textarea matInput [(ngModel)]="comments" placeholder="Comments"></textarea>
+  <mat-form-field>
+    <textarea
+      matInput
+      [(ngModel)]="appointment.comments"
+      placeholder="Comments"
+    ></textarea>
   </mat-form-field>
 </div>
 <div class="row">
-  <mat-form-field class="example-full-width">
+  <mat-form-field>
     <textarea
       matInput
-      [(ngModel)]="healthCondition"
+      [(ngModel)]="appointment.healthStatus"
       placeholder="Health Condition"
     ></textarea>
   </mat-form-field>
 </div>
 <div class="row">
-  <button mat-raised-button (click)="createAppointment()">Book!</button>
+  <mat-form-field>
+    <textarea
+      matInput
+      [(ngModel)]="appointment.lastMedication"
+      placeholder="Medication"
+    ></textarea>
+  </mat-form-field>
+</div>
+<div class="row">
+  <mat-select
+    placeholder="Appointment Status"
+    [(ngModel)]="appointment.status"
+    name="slot"
+  >
+    <mat-option *ngFor="let status of AppStatus" [value]="status">
+      {{ status }}
+    </mat-option>
+  </mat-select>
+</div>
+<div class="row">
+  <button (click)="update()" mat-raised-button>Update!</button>
 </div>

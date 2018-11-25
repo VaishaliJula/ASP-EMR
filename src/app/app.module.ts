@@ -60,6 +60,9 @@ import {
   MatTreeModule
 } from '@angular/material/';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
+import { AddSoapNoteComponent } from './add-soap-note/add-soap-note.component';
+import { UpdateAppointmentComponent } from './update-appointment/update-appointment.component';
+import { PatientChartsComponent } from './patient-charts/patient-charts.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +76,10 @@ import { AddAppointmentComponent } from './add-appointment/add-appointment.compo
     AppointmentsComponent,
     TimeSelectionComponent,
     MainComponent,
-    AddAppointmentComponent
+    AddAppointmentComponent,
+    AddSoapNoteComponent,
+    UpdateAppointmentComponent,
+    PatientChartsComponent
   ],
   imports: [
     BrowserModule,
@@ -122,6 +128,10 @@ import { AddAppointmentComponent } from './add-appointment/add-appointment.compo
   ],
   providers: [RegistrationService, LoginService, AuthGuard, HttpService],
   bootstrap: [AppComponent],
-  entryComponents: [AddAppointmentComponent]
+  entryComponents: [
+    AddAppointmentComponent,
+    AddSoapNoteComponent,
+    UpdateAppointmentComponent
+  ]
 })
 export class AppModule {}

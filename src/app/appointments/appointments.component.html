@@ -37,7 +37,7 @@
       <th>Med Rec #</th>
       <th>Patient Name</th>
       <th>Doctor Name</th>
-      <th>Cheif Complaint</th>
+      <th>Chief Complaint</th>
       <th>Health Status</th>
       <th>Medication</th>
       <th>App Status</th>
@@ -53,14 +53,24 @@
           {{ appointment.hospitalStaff.firstName }}
           {{ appointment.hospitalStaff.firstName }}
         </td>
-        <td>{{ appointment.cheifComplaints }}</td>
+        <td>{{ appointment.chiefComplaints }}</td>
         <td>{{ appointment.healthStatus }}</td>
         <td>{{ appointment.lastMedication }}</td>
         <td>{{ appointment.status }}</td>
         <td colspan="2">
           <div class="row">
-            <button class="btn col-lg-6 btn-primary">Add SOAP</button>
-            <button class="btn col-lg-6 btn-warning">Update</button>
+            <button
+              class="btn col-lg-6 btn-primary"
+              (click)="openSoapNoteDialog(appointment.patient.mrnum)"
+            >
+              Add SOAP
+            </button>
+            <button
+              (click)="openUpdateAppointment(appointment)"
+              class="btn col-lg-6 btn-warning"
+            >
+              Update
+            </button>
           </div>
         </td>
       </tr>
