@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import { FormGroup, FormControl,Validators } from '@angular/forms';
-import { LoginService } from 'src/app/login.service'
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/login.service';
 // import { FormGroup } from '@angular/forms/src/model';
 
 @Component({
@@ -10,7 +10,6 @@ import { LoginService } from 'src/app/login.service'
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-
   loginTitle = 'Sign In';
   loginForm;
   constructor(private service: LoginService) {}
@@ -18,23 +17,19 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
     this.createForm();
   }
-  createForm(){
+  createForm() {
     this.loginForm = new FormGroup({
-      email : new FormControl("",Validators.required),
-      password : new FormControl("",Validators.required)
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
-    
   }
-  checkRole(value){
+  checkRole(value) {
     if (this.loginForm.invalid) {
       alert('Please enter Email and Password');
       console.log(this.loginForm.value);
-    }
-    else {
+    } else {
       this.service.validateLoginStaff(value);
-      alert("Form submitted");
       this.loginForm.reset();
-      
     }
   }
 }

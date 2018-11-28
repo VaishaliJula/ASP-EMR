@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpService } from './http.service';
+import { Doctor } from './models/Doctor.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { HttpService } from './http.service';
 export class LoginService {
   isUserLoggedIn: boolean;
   userEmail: string;
+  loggedInUser: Doctor;
 
   constructor(private router: Router, private httpClient: HttpService) {
     this.isUserLoggedIn = false;
@@ -24,9 +26,10 @@ export class LoginService {
         Object.keys(res.body);
 
         if (res.status === 200) {
+          this.loggedInUser = res.body;
           this.isUserLoggedIn = true;
           this.userEmail = formData.email;
-          this.router.navigate(['']);
+          this.router.navigate(['/dashboard']);
         }
       });
   }
@@ -41,7 +44,17 @@ export class LoginService {
     // return false;
   }
 
+  logout() {
+    this.isUserLoggedIn = false;
+    this.userEmail = null;
+    this.loggedInUser = null;
+  }
+
   getLoggedInUserEmail() {
     return this.userEmail;
+  }
+
+  getLoggedInUserDetails() {
+    return this.loggedInUser;
   }
 }

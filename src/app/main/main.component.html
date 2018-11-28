@@ -12,12 +12,15 @@
       </div>
       <div class="text-center">
         <div class="mb-2">Welcome</div>
-        <div class="mb-4">{{ email }}</div>
+        <div class="mb-4">
+          Dr {{ this.doctor?.firstName }} {{ this.doctor?.lastName }}
+        </div>
       </div>
       <a routerLink="/dashboard">Dashboard</a>
       <a routerLink="/registration">Registration</a>
       <a routerLink="/appointments">Appointments</a>
       <a routerLink="/patients">Patient Charts</a> <a href="#">Payments</a>
+      <a href="#" (click)="logout()">Logout</a>
     </div>
   </div>
   <div class="col-xl-10 col-lg-9"><router-outlet></router-outlet></div>

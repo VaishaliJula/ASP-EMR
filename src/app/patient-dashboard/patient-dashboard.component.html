@@ -15,7 +15,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Checked In</h5>
-        <h3 class="card-subtitle mb-2 text-muted">10</h3>
+        <h3 class="card-subtitle mb-2 text-muted">{{ checkedIn.length }}</h3>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Checked Out</h5>
-        <h3 class="card-subtitle mb-2 text-muted">8</h3>
+        <h3 class="card-subtitle mb-2 text-muted">{{ checkedOut.length }}</h3>
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let appointment of pending; let i = index">
+      <tr *ngFor="let appointment of appointments; let i = index">
         <td>{{ i + 1 }}</td>
         <td>
           {{ appointment.patient.firstName }} {{ appointment.patient.lastName }}
