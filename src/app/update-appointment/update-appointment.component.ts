@@ -9,7 +9,20 @@ import { AppointmentService } from '../appointment.service';
   styleUrls: ['./update-appointment.component.css']
 })
 export class UpdateAppointmentComponent implements OnInit {
-  appointment: Appointment;
+  //appointment: Appointment;
+  set appointment(val: Appointment) {
+    this._appointment = {
+      ...val,
+      date:( val.date as any instanceof Date) 
+      ? val.date 
+      : new Date(...val.date.split('-').map(Number).map((n,i) => i===1 ? n-1 : n))
+    }
+  };
+  get appointment (){
+    return this._appointment
+  }
+
+  private _appointment;
 
   AppStatus = ['PENDING', 'CHECKED_IN', 'CHECKED_OUT', 'CANCELLED'];
   constructor(
