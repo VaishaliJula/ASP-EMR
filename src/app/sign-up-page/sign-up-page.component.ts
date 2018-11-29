@@ -9,6 +9,31 @@ import { RegistrationService } from 'src/app/registration.service';
 })
 export class SignUpPageComponent implements OnInit {
   signupTitle = 'Register Here';
+  salutation = [
+    {id:1,name:'Mr'},
+    {id:2,name:'Ms'},
+    {id:3,name:'Mrs'},
+  ];
+
+  race = [
+    {id:1, name:'American Indian or Alaska Native' },
+    {id:2, name:'Asian'},
+    {id:3, name:'Black or African American' },
+    {id:4, name:'Native Hawaiian or Other Pacific Islander' },
+    {id:5, name:'White'}
+    ];
+
+  ethinicity = [
+    {id:1, name:'Hispanic or Latino'},{id:2, name:'Not Hispanic or Latino'}
+  ];
+  disability =[
+    {id:1, name:'Disabled'},
+    {id:2,name:'Not Disabled'}
+  ];
+  maritalStatus = [
+    {id:1, name:'Single'},{id:2, name:'Married'}
+  ];
+
   registrationForm;
   constructor(private service: RegistrationService) { }
 
@@ -18,34 +43,26 @@ export class SignUpPageComponent implements OnInit {
 
   createForm() {
     this.registrationForm = new FormGroup({
-      salutation: new FormControl("", Validators.required),
-      firstName: new FormControl("", Validators.required),
-      lastName: new FormControl("", Validators.required),
+      salutation: new FormControl(null, Validators.required),
+      firstName: new FormControl("", Validators.compose([Validators.required,Validators.minLength(5),Validators.maxLength(10),Validators.pattern("")])),
+      lastName: new FormControl("", Validators.compose([Validators.required,Validators.minLength(5),Validators.maxLength(10),Validators.pattern("")])),
       gender: new FormControl("", Validators.required),
       dob: new FormControl("", Validators.required),
-      race: new FormControl("", Validators.required),
-      ethnicity: new FormControl("", Validators.required),
-      occupation: new FormControl("", Validators.required),
-      ssn: new FormControl("", Validators.required),
-      genderIdentity: new FormControl("", Validators.required),
-      sexOrientation: new FormControl("", Validators.required),
-      preferredLanguage: new FormControl("", Validators.required),
-      communicationPreferrence: new FormControl("", Validators.required),
-      maritalStatus: new FormControl("", Validators.required),
-      disabilityStatus: new FormControl("", Validators.required),
-      address1: new FormControl("", Validators.required),
+      race: new FormControl(null, Validators.required),
+      ethnicity: new FormControl(null, Validators.required),
+      occupation: new FormControl("", Validators.compose([Validators.required,Validators.pattern("")])),
+      maritalStatus: new FormControl(null, Validators.required),
+      disabilityStatus: new FormControl(null, Validators.required),
+      address1: new FormControl("", Validators.compose([Validators.required,Validators.maxLength(30)])),
       address2: new FormControl(""),
-      zip: new FormControl("", Validators.required),
-      city: new FormControl("", Validators.required),
-      state: new FormControl("", Validators.required),
-      homeTelephone: new FormControl(""),
-      mobileNumber: new FormControl("", Validators.required),
-      firstVisit: new FormControl(""),
-      kinFirst: new FormControl("", Validators.required),
-      kinLast: new FormControl("", Validators.required),
-      kinAddress: new FormControl(""),
-      kinTelephone: new FormControl("", Validators.required),
-      relationship: new FormControl("", Validators.required),
+      zip: new FormControl("", Validators.compose([Validators.required,Validators.minLength(5),Validators.maxLength(5)])),
+      city: new FormControl("", Validators.compose([Validators.required,Validators.pattern("")])),
+      state: new FormControl("", Validators.compose([Validators.required,Validators.pattern("")])),
+      mobileNumber: new FormControl("", Validators.compose([Validators.required,Validators.maxLength(10),Validators.minLength(10)])),
+      kinFirst: new FormControl("", Validators.compose([Validators.required,Validators.minLength(5),Validators.maxLength(10),Validators.pattern("")])),
+      kinLast: new FormControl("", Validators.compose([Validators.required,Validators.minLength(5),Validators.maxLength(10),Validators.pattern("")])),
+      kinTelephone: new FormControl("", Validators.compose([Validators.required,Validators.maxLength(10),Validators.minLength(10)])),
+      relationship: new FormControl("", Validators.compose([Validators.required,Validators.pattern("")])),
     });
   }
   addPatient(value) {

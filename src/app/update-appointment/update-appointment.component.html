@@ -1,7 +1,6 @@
 <div class="row">
   <mat-form-field class="col-lg-6">
     <input
-      disabled
       matInput
       [(ngModel)]="appointment.date"
       [matDatepicker]="picker"
@@ -62,15 +61,13 @@
       placeholder="Cheif Complaints"
     ></textarea>
   </mat-form-field>
-</div>
-<div class="row">
   <mat-form-field>
-    <textarea
-      matInput
-      [(ngModel)]="appointment.comments"
-      placeholder="Comments"
-    ></textarea>
-  </mat-form-field>
+      <textarea
+        matInput
+        [(ngModel)]="appointment.comments"
+        placeholder="Comments"
+      ></textarea>
+    </mat-form-field>
 </div>
 <div class="row">
   <mat-form-field>
@@ -80,16 +77,15 @@
       placeholder="Health Condition"
     ></textarea>
   </mat-form-field>
-</div>
-<div class="row">
   <mat-form-field>
-    <textarea
-      matInput
-      [(ngModel)]="appointment.lastMedication"
-      placeholder="Medication"
-    ></textarea>
-  </mat-form-field>
+      <textarea
+        matInput
+        [(ngModel)]="appointment.lastMedication"
+        placeholder="Medication"
+      ></textarea>
+    </mat-form-field>
 </div>
+
 <div class="row">
   <mat-select
     placeholder="Appointment Status"

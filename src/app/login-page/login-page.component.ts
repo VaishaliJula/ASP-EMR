@@ -19,14 +19,13 @@ export class LoginPageComponent implements OnInit {
   }
   createForm() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.compose([Validators.required])),
       password: new FormControl('', Validators.required)
     });
   }
   checkRole(value) {
     if (this.loginForm.invalid) {
-      alert('Please enter Email and Password');
-      console.log(this.loginForm.value);
+      alert('Please enter Valid Credentials');
     } else {
       this.service.validateLoginStaff(value);
       this.loginForm.reset();

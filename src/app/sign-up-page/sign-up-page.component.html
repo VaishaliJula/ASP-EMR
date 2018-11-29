@@ -8,164 +8,152 @@
     <form [formGroup]="registrationForm" (ngSubmit)="addPatient(registrationForm.value)">
         <div class="row">
             <div class="col-sm-3">
-                <label>Salutation</label>
+                <label for="salutation">Salutation</label>
                 <br>
-                <select formControlName="salutation">
-                    <option value="none">None</option>
-                    <option value="Mr">Mr</option>
-                    <option value="Ms">Ms</option>
-                    <option value="Mrs">Mrs</option>
+                <select formControlName="salutation" id="salutation">
+                    <option [ngValue]="null">Select</option>
+                    <option *ngFor="let sal of salutation" [value]="sal.id">{{sal.name}}</option>
                 </select>
+
+                <div *ngIf="registrationForm.controls['salutation'].touched && !registrationForm.controls['salutation'].valid">
+                    <span *ngIf="registrationForm.controls['salutation'].hasError('required') ">
+                        Salutation is Required
+                    </span>
+                </div>
             </div>
             <div class="col-sm-3">
                 <label for="firstName">FirstName</label>
                 <br>
                 <input type="text" id="firstName" formControlName="firstName">
                 <div *ngIf="registrationForm.controls['firstName'].touched && !registrationForm.controls['firstName'].valid">
-                    <span *ngIf="registrationForm.controls['firstName'].hasError('required') ">
-                        *Please enter FirstName
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.required ">
+                        Please enter FirstName
+                    </span>
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.pattern ">
+                        Firstname is alpha
+                    </span>
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.minlength ">
+                        Min length is 5
+                    </span>
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.maxlength ">
+                        Max Lenght is 10
                     </span>
                 </div>
             </div>
             <div class="col-sm-3">
-                <label>LastName</label>
+                <label for="lastName">LastName</label>
                 <br>
-                <input type="text" formControlName="lastName">
+                <input type="text" formControlName="lastName" id="lastName">
                 <div *ngIf="registrationForm.controls['lastName'].touched && !registrationForm.controls['lastName'].valid">
-                    <span *ngIf="registrationForm.controls['lastName'].hasError('required') ">
-                        *Please enter lastName
+                    <span *ngIf="registrationForm.controls['lastName'].errors?.required ">
+                        Please enter LastName
+                    </span>
+                    <span *ngIf="registrationForm.controls['lastName'].errors?.pattern ">
+                        LastName is alpha
+                    </span>
+                    <span *ngIf="registrationForm.controls['lastName'].errors?.minlength ">
+                        Min length is 5
+                    </span>
+                    <span *ngIf="registrationForm.controls['lastName'].errors?.maxlength ">
+                        Max Lenght is 10
                     </span>
                 </div>
             </div>
+
             <div class="col-sm-3">
-                <label>First Visit</label>
+                <label for="dateofBirth">Date of Birth</label>
                 <br>
-                <input type="text" formControlName="firstVisit" bsDatepicker>
+                <input type="Date" formControlName="dob" id="dateofBirth">
+                <div *ngIf="registrationForm.controls['dob'].touched && !registrationForm.controls['dob'].valid">
+                    <span *ngIf="registrationForm.controls['dob'].hasError('required') ">
+                        Please select date of birth
+                    </span>
+                </div>
             </div>
+
         </div>
 
         <div class="row">
             <div class="col-sm-3">
                 <label>Gender</label>
                 <br>
-                <input type="text" formControlName="gender">
+                <label class="radio-inline">
+                    <input type="radio" value="male" formControlName="gender">Male &nbsp;
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="female" formControlName="gender">Female
+                </label>
                 <div *ngIf="registrationForm.controls['gender'].touched && !registrationForm.controls['gender'].valid">
                     <span *ngIf="registrationForm.controls['gender'].hasError('required') ">
-                        *Please enter gender
+                        Please select gender
                     </span>
                 </div>
             </div>
+
             <div class="col-sm-3">
-                <label>Date of Birth</label>
+                <label for="ethinicity">Ethnicity</label>
                 <br>
-                <input type="text" formControlName="dob" bsDatepicker>
-                <div *ngIf="registrationForm.controls['dob'].touched && !registrationForm.controls['dob'].valid">
-                    <span *ngIf="registrationForm.controls['dob'].hasError('required') ">
-                        *Please enter dob
-                    </span>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <label>Race</label>
-                <br>
-                <input type="text" formControlName="race">
-                <div *ngIf="registrationForm.controls['race'].touched && !registrationForm.controls['race'].valid">
-                    <span *ngIf="registrationForm.controls['race'].hasError('required') ">
-                        *Please enter Race
-                    </span>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <label>Ethnicity</label>
-                <br>
-                <input type="text" formControlName="ethnicity">
+                <select id="ethinicity" formControlName="ethnicity">
+                    <option [ngValue]="null">Select</option>
+                    <option *ngFor="let ethn of ethinicity" [value]="ethn.id">{{ethn.name}}</option>
+                </select>
                 <div *ngIf="registrationForm.controls['ethnicity'].touched && !registrationForm.controls['ethnicity'].valid">
                     <span *ngIf="registrationForm.controls['ethnicity'].hasError('required') ">
-                        *Please enter ethnicity
+                        Please select ethnicity
                     </span>
                 </div>
             </div>
+
+            <div class="col-sm-3">
+                <label for="race">Race</label>
+                <br>
+                <select id="race" formControlName="race">
+                    <option [ngValue]="null">Select</option>
+                    <option *ngFor="let rac of race" [value]="rac.id">{{rac.name}}</option>
+                </select>
+                <div *ngIf="registrationForm.controls['race'].touched && !registrationForm.controls['race'].valid">
+                    <span *ngIf="registrationForm.controls['race'].hasError('required') ">
+                        Please select Race
+                    </span>
+                </div>
+            </div>
+
         </div>
         <div class="row">
             <div class="col-sm-3">
-                <label>Occupation</label>
+                <label for="occupation">Occupation</label>
                 <br>
-                <input type="text" formControlName="occupation">
+                <input id="occupation" type="text" formControlName="occupation">
                 <div *ngIf="registrationForm.controls['occupation'].touched && !registrationForm.controls['occupation'].valid">
                     <span *ngIf="registrationForm.controls['occupation'].hasError('required') ">
-                        *Please enter Occupation
+                        Please enter Occupation
                     </span>
                 </div>
             </div>
+
             <div class="col-sm-3">
-                <label>SSN</label>
+                <label for="marital">Marital Status</label>
                 <br>
-                <input type="text" formControlName="ssn">
-                <div *ngIf="registrationForm.controls['ssn'].touched && !registrationForm.controls['ssn'].valid">
-                    <span *ngIf="registrationForm.controls['ssn'].hasError('required') ">
-                        *Please enter SSN
-                    </span>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <label>Gender Identity</label>
-                <br>
-                <input type="text" formControlName="genderIdentity">
-                <div *ngIf="registrationForm.controls['genderIdentity'].touched && !registrationForm.controls['genderIdentity'].valid">
-                    <span *ngIf="registrationForm.controls['genderIdentity'].hasError('required') ">
-                        *Please enter genderIdentity
-                    </span>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <label>Sex Orientation</label>
-                <br>
-                <input type="text" formControlName="sexOrientation">
-                <div *ngIf="registrationForm.controls['sexOrientation'].touched && !registrationForm.controls['sexOrientation'].valid">
-                    <span *ngIf="registrationForm.controls['sexOrientation'].hasError('required') ">
-                        *Please enter sexOrientation
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <label>Preferred Language</label>
-                <br>
-                <input type="text" formControlName="preferredLanguage">
-                <div *ngIf="registrationForm.controls['preferredLanguage'].touched && !registrationForm.controls['preferredLanguage'].valid">
-                    <span *ngIf="registrationForm.controls['preferredLanguage'].hasError('required') ">
-                        *Please enter Language
-                    </span>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <label>Communication Preferrence</label>
-                <br>
-                <input type="text" formControlName="communicationPreferrence">
-                <div *ngIf="registrationForm.controls['communicationPreferrence'].touched && !registrationForm.controls['communicationPreferrence'].valid">
-                    <span *ngIf="registrationForm.controls['communicationPreferrence'].hasError('required') ">
-                        *Please enter communicationPreferrence
-                    </span>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <label>Marital Status</label>
-                <br>
-                <input type="text" formControlName="maritalStatus">
+                <select id="marital" type="text" formControlName="maritalStatus">
+                    <option [ngValue]="null">Select</option>
+                    <option *ngFor="let marital of maritalStatus" [value]="marital.id">{{marital.name}}</option>
+                </select>
                 <div *ngIf="registrationForm.controls['maritalStatus'].touched && !registrationForm.controls['maritalStatus'].valid">
                     <span *ngIf="registrationForm.controls['maritalStatus'].hasError('required') ">
-                        *Please enter MaritalStatus
+                        Please select MaritalStatus
                     </span>
                 </div>
             </div>
             <div class="col-sm-3">
-                <label>Disability Status</label>
+                <label for="disability">Disability Status</label>
                 <br>
-                <input type="text" formControlName="disabilityStatus">
+                <select id="disability" type="text" formControlName="disabilityStatus">
+                    <option [ngValue]="null">Select</option>
+                    <option *ngFor="let disable of disability" [value]="disable.id">{{disable.name}}</option>
+                </select>
                 <div *ngIf="registrationForm.controls['disabilityStatus'].touched && !registrationForm.controls['disabilityStatus'].valid">
                     <span *ngIf="registrationForm.controls['disabilityStatus'].hasError('required') ">
-                        *Please enter disabilityStatus
+                        Please select disabilityStatus
                     </span>
                 </div>
             </div>
@@ -176,8 +164,14 @@
                 <br>
                 <input type="text" formControlName="address1">
                 <div *ngIf="registrationForm.controls['address1'].touched && !registrationForm.controls['address1'].valid">
-                    <span *ngIf="registrationForm.controls['address1'].hasError('required') ">
-                        *Please enter address1
+                    <span *ngIf="registrationForm.controls['address1'].errors?.required ">
+                        Please enter address1
+                    </span>
+                    <span *ngIf="registrationForm.controls['address1'].errors?.pattern ">
+                        address1 should be alphaNumeric
+                    </span>
+                    <span *ngIf="registrationForm.controls['address1'].errors?.maxlength ">
+                        Max Lenght should be 30
                     </span>
                 </div>
             </div>
@@ -189,10 +183,16 @@
             <div class="col-sm-3">
                 <label>Zip Code</label>
                 <br>
-                <input type="text" formControlName="zip">
+                <input type="number" formControlName="zip">
                 <div *ngIf="registrationForm.controls['zip'].touched && !registrationForm.controls['zip'].valid">
-                    <span *ngIf="registrationForm.controls['zip'].hasError('required') ">
-                        *Please enter zip
+                    <span *ngIf="registrationForm.controls['zip'].errors?.required ">
+                        Zip is Required
+                    </span>
+                    <span *ngIf="registrationForm.controls['zip'].errors?.minlength ">
+                        Min length is 5
+                    </span>
+                    <span *ngIf="registrationForm.controls['zip'].errors?.maxlength ">
+                        Max lenght is 5
                     </span>
                 </div>
             </div>
@@ -202,7 +202,7 @@
                 <input type="text" formControlName="city">
                 <div *ngIf="registrationForm.controls['city'].touched && !registrationForm.controls['city'].valid">
                     <span *ngIf="registrationForm.controls['city'].hasError('required') ">
-                        *Please enter city
+                        Please enter city
                     </span>
                 </div>
             </div>
@@ -214,38 +214,39 @@
                 <input type="text" formControlName="state">
                 <div *ngIf="registrationForm.controls['state'].touched && !registrationForm.controls['state'].valid">
                     <span *ngIf="registrationForm.controls['state'].hasError('required') ">
-                        *Please enter State
+                        Please enter State
                     </span>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <label>Home Telephone</label>
-                <br>
-                <input type="text" formControlName="homeTelephone">
             </div>
             <div class="col-sm-3">
                 <label>Mobile Number</label>
                 <br>
-                <input type="text" formControlName="mobileNumber">
+                <input type="number" formControlName="mobileNumber">
                 <div *ngIf="registrationForm.controls['mobileNumber'].touched && !registrationForm.controls['mobileNumber'].valid">
-                    <span *ngIf="registrationForm.controls['mobileNumber'].hasError('required') ">
-                        *Please enter mobileNumber
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.required ">
+                        Telephone is Required
+                    </span>
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.maxlength ">
+                        Enter a valid Number
+                    </span>
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.minlenght ">
+                        Enter a valid Number
                     </span>
                 </div>
             </div>
+        </div>
+        <div class="row">
+
             <div class="col-sm-3">
                 <label>Guardian FirstName</label>
                 <br>
                 <input type="text" formControlName="kinFirst">
                 <div *ngIf="registrationForm.controls['kinFirst'].touched && !registrationForm.controls['kinFirst'].valid">
                     <span *ngIf="registrationForm.controls['kinFirst'].hasError('required') ">
-                        *Please enter kinFirst
+                        Please enter kinFirst
                     </span>
                 </div>
             </div>
-
-        </div>
-        <div class="row">
 
             <div class="col-sm-3">
                 <label>Guardian LastName</label>
@@ -253,22 +254,24 @@
                 <input type="text" formControlName="kinLast">
                 <div *ngIf="registrationForm.controls['kinLast'].touched && !registrationForm.controls['kinLast'].valid">
                     <span *ngIf="registrationForm.controls['kinLast'].hasError('required') ">
-                        *Please enter kinLast
+                        Please enter kinLast
                     </span>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <label>Guardian Address</label>
-                <br>
-                <input type="text" formControlName="kinAddress">
-            </div>
+
             <div class="col-sm-3">
                 <label>Guardian Telephone</label>
                 <br>
-                <input type="text" formControlName="kinTelephone">
+                <input type="number" formControlName="kinTelephone">
                 <div *ngIf="registrationForm.controls['kinTelephone'].touched && !registrationForm.controls['kinTelephone'].valid">
-                    <span *ngIf="registrationForm.controls['kinTelephone'].hasError('required') ">
-                        *Please enter FirstName
+                    <span *ngIf="registrationForm.controls['kinTelephone'].errors?.required ">
+                        Telephone is Required
+                    </span>
+                    <span *ngIf="registrationForm.controls['kinTelephone'].errors?.maxlength ">
+                        Enter a valid Number
+                    </span>
+                    <span *ngIf="registrationForm.controls['kinTelephone'].errors?.minlength ">
+                        Enter a valid Number
                     </span>
                 </div>
             </div>
@@ -278,7 +281,7 @@
                 <input type="text" formControlName="relationship">
                 <div *ngIf="registrationForm.controls['relationship'].touched && !registrationForm.controls['relationship'].valid">
                     <span *ngIf="registrationForm.controls['relationship'].hasError('required') ">
-                        *Please enter relationship
+                        Please enter relationship
                     </span>
                 </div>
             </div>

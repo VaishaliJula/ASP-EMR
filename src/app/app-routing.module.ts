@@ -12,7 +12,6 @@ import { PatientChartsComponent } from './patient-charts/patient-charts.componen
 
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
-  { path: 'ProductList', component: ProductListComponent },
   {
     path: '',
     component: MainComponent,
@@ -22,7 +21,6 @@ const routes: Routes = [
       { path: 'registration', component: SignUpPageComponent },
       { path: 'appointments', component: AppointmentsComponent },
       { path: 'patients', component: PatientChartsComponent },
-      { path: 'payments', component: SignUpPageComponent },
       { path: 'contact', component: SignUpPageComponent }
     ]
   }

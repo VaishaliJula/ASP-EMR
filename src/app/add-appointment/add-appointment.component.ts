@@ -95,21 +95,24 @@ export class AddAppointmentComponent implements OnInit {
       lastMedication: this.medication,
       status: 'PENDING',
       patient: {
-        mrnum: 1
+        mrnum: this.mrNum
       },
       hospitalStaff: {
-        email: 'vaishali.jula@gmail.com'
+        email: this.selectedDoctorId
       }
     };
-    this.appointmentService
-      .createAppointment(appointment)
-      .subscribe((res: Appointment) => {
-        this.snackbar.open('Appointment Created', '', {
-          duration: 300
+    this.checkAppointmnetValidity();
+    if (this.isFormValid) {
+      this.appointmentService
+        .createAppointment(appointment)
+        .subscribe((res: Appointment) => {
+          this.snackbar.open('Appointment Created', '', {
+            duration: 300
+          });
+          this.dialogRef.close();
         });
-        this.dialogRef.close();
-      });
+    }
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

@@ -15,22 +15,28 @@
       <h3>{{loginTitle}}</h3>
       <form [formGroup]="loginForm" (ngSubmit)="checkRole(loginForm.value)">
         <div class="form-group">
-          <label>Email</label>
-          <input type="text" placeholder="E-Mail" formControlName="email" class="form-control">
+          <label for="email">Email</label>
+          <input id="email" type="text" placeholder="E-Mail" formControlName="email" class="form-control" pattern="([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+          <div *ngIf="loginForm.controls['email'].touched && !loginForm.controls['email'].valid">
+            <span *ngIf="loginForm.controls['email'].errors?.required ">
+              E-mail is Required
+            </span>
+            <span *ngIf="loginForm.controls['email'].errors?.pattern">
+              Enter a valid E-mail
+            </span>
+          </div>
         </div>
         <div class="form-group">
-          <label>Password</label>
-          <input type="password" placeholder="Password" formControlName="password" class="form-control">
-        </div>
-        <div class="mt-2 d-flex justify-content-between">
-          <div class="form-check form-check-inline">
-            <input type="checkbox" class="form-check-input" id="remember-me">
-            <label for="remember-me" class="form-check-label">Remember me</label>
+          <label for="pass">Password</label>
+          <input id="pass" type="password" placeholder="Password" formControlName="password" class="form-control">
+          <div *ngIf="loginForm.controls['password'].touched && !loginForm.controls['password'].valid">
+            <span *ngIf="loginForm.controls['password'].errors?.required ">
+              Password is Required
+            </span>
           </div>
-          <a href=""> Forgot Password</a>
         </div>
         <div class="mt-2">
-          <button type="submit" class="btn btn-danger btn-rounded waves-effect signInButton">Sign In
+          <button  [disabled]= "!loginForm.valid"type="submit" class="btn btn-danger btn-rounded waves-effect signInButton">Sign In
           </button>
         </div>
       </form>
