@@ -63,6 +63,8 @@ import { AddAppointmentComponent } from './add-appointment/add-appointment.compo
 import { AddSoapNoteComponent } from './add-soap-note/add-soap-note.component';
 import { UpdateAppointmentComponent } from './update-appointment/update-appointment.component';
 import { PatientChartsComponent } from './patient-charts/patient-charts.component';
+import { LoginDetailsComponent } from './login-details/login-details.component';
+import { DoctorRegistrationComponent } from './doctor-registration/doctor-registration.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,9 @@ import { PatientChartsComponent } from './patient-charts/patient-charts.componen
     AddAppointmentComponent,
     AddSoapNoteComponent,
     UpdateAppointmentComponent,
-    PatientChartsComponent
+    PatientChartsComponent,
+    LoginDetailsComponent,
+    DoctorRegistrationComponent
   ],
   imports: [
     BrowserModule,

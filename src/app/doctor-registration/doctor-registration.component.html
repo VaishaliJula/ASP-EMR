@@ -1,0 +1,166 @@
+<body>
+    <br>
+    <h3 style="text-align:center">Doctor Registration</h3>
+    <br><br>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="addDoctor(registrationForm.value)">
+        <div class="row" style="padding: 10px;">
+            <div class="col-sm-3">
+                <label for="firstName">FirstName</label>
+                <br>
+                <input class="form-control" type="text" id="firstName" formControlName="firstName">
+                <div *ngIf="registrationForm.controls['firstName'].touched && !registrationForm.controls['firstName'].valid">
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.required ">
+                        Please enter FirstName
+                    </span>
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.pattern ">
+                        Firstname is alpha
+                    </span>
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.minlength ">
+                        Min length is 5
+                    </span>
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.maxlength ">
+                        Max Lenght is 10
+                    </span>
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.pattern ">
+                        Only alphabets are allowed!
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label for="lastName">LastName</label>
+                <br>
+                <input class="form-control" type="text" formControlName="lastName" id="lastName">
+                <div *ngIf="registrationForm.controls['lastName'].touched && !registrationForm.controls['lastName'].valid">
+                    <span *ngIf="registrationForm.controls['lastName'].errors?.required ">
+                        Please enter LastName
+                    </span>
+                    <span *ngIf="registrationForm.controls['lastName'].errors?.pattern ">
+                        LastName is alpha
+                    </span>
+                    <span *ngIf="registrationForm.controls['lastName'].errors?.minlength ">
+                        Min length is 5
+                    </span>
+                    <span *ngIf="registrationForm.controls['lastName'].errors?.maxlength ">
+                        Max Lenght is 10
+                    </span>
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.pattern ">
+                        Only alphabets are allowed!
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <label for="dateofBirth">Date of Birth</label>
+                <br>
+                <input class="form-control" type="Date" formControlName="dob" id="dateofBirth">
+                <div *ngIf="registrationForm.controls['dob'].touched && !registrationForm.controls['dob'].valid">
+                    <span *ngIf="registrationForm.controls['dob'].hasError('required') ">
+                        Please select date of birth
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px;">
+            <div class="col-sm-3">
+                <label>Address Line 1</label>
+                <br>
+                <input class="form-control" type="text" formControlName="address1">
+                <div *ngIf="registrationForm.controls['address1'].touched && !registrationForm.controls['address1'].valid">
+                    <span *ngIf="registrationForm.controls['address1'].errors?.required ">
+                        Please enter address1
+                    </span>
+                    <span *ngIf="registrationForm.controls['address1'].errors?.pattern ">
+                        address1 should be alphaNumeric
+                    </span>
+                    <span *ngIf="registrationForm.controls['address1'].errors?.maxlength ">
+                        Max Lenght should be 30
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Address Line 2</label>
+                <br>
+                <input class="form-control" type="text" formControlName="address2">
+            </div>
+            <div class="col-sm-3">
+                <label>Zip Code</label>
+                <br>
+                <input class="form-control" type="number" formControlName="zip">
+                <div *ngIf="registrationForm.controls['zip'].touched && !registrationForm.controls['zip'].valid">
+                    <span *ngIf="registrationForm.controls['zip'].errors?.required ">
+                        Zip is Required
+                    </span>
+                    <span *ngIf="registrationForm.controls['zip'].errors?.minlength ">
+                        Min length is 5
+                    </span>
+                    <span *ngIf="registrationForm.controls['zip'].errors?.maxlength ">
+                        Max lenght is 5
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>City</label>
+                <br>
+                <input class="form-control" type="text" formControlName="city">
+                <div *ngIf="registrationForm.controls['city'].touched && !registrationForm.controls['city'].valid">
+                    <span *ngIf="registrationForm.controls['city'].hasError('required') ">
+                        Please enter city
+                    </span>
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.pattern ">
+                        Only alphabets are allowed!
+                    </span>
+                </div>
+
+            </div>
+        </div>
+        <div class="row" style="padding: 10px;">
+            <div class="col-sm-3">
+                <label>State</label>
+                <br>
+                <input class="form-control" type="text" formControlName="state">
+                <div *ngIf="registrationForm.controls['state'].touched && !registrationForm.controls['state'].valid">
+                    <span *ngIf="registrationForm.controls['state'].hasError('required') ">
+                        Please enter State
+                    </span>
+                    <span *ngIf="registrationForm.controls['firstName'].errors?.pattern ">
+                        Only alphabets are allowed!
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Mobile Number</label>
+                <br>
+                <input class="form-control" type="number" formControlName="mobileNumber">
+                <div *ngIf="registrationForm.controls['mobileNumber'].touched && !registrationForm.controls['mobileNumber'].valid">
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.required ">
+                        Telephone is Required
+                    </span>
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.maxlength ">
+                        Enter a valid Number
+                    </span>
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.minlenght ">
+                        Enter a valid Number
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label for="email">Email</label>
+                <br>
+                <input class="form-control" type="email" formControlName="email">
+                <div *ngIf="registrationForm.controls['email'].touched && !registrationForm.controls['email'].valid">
+                    <span *ngIf="registrationForm.controls['email'].errors?.required ">
+                        E-mail is Required
+                    </span>
+                    <span *ngIf="registrationForm.controls['email'].errors?.pattern">
+                        Enter a valid E-mail
+                    </span>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div id="submit">
+            <input type="submit" class="btn btn-info">&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </form>
+</body>

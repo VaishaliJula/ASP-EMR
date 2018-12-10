@@ -1,3 +1,5 @@
+import { User } from './../models/User';
+import { LoginService } from 'src/app/login.service';
 import { Component, OnInit } from '@angular/core';
 import { PatientsService } from '../patients.service';
 import { Patient } from '../models/Patient.model';
@@ -25,12 +27,14 @@ export class AddAppointmentComponent implements OnInit {
   comments;
   healthCondition;
   medication;
+  user: User
+
 
   findPatient() {
     this.patientService
       .getPatientDetails(this.mrNum)
-      .subscribe((res: Patient) => {
-        this.patientName = res.firstName + ' ' + res.lastName;
+      .subscribe((response) => {
+        this.patientName = response[0].firstName + ' ' + response[0].lastName;
       });
   }
 
@@ -54,8 +58,10 @@ export class AddAppointmentComponent implements OnInit {
     private staffService: HospitalStaffService,
     private appointmentService: AppointmentService,
     private snackbar: MatSnackBar,
+    private authService: LoginService,
     private dialogRef: MatDialogRef<AddAppointmentComponent>
   ) {
+    this.user = authService.getLoggedInUserDetails();
     this.staffService.getAllDoctors().subscribe((res: Doctor[]) => {
       this.doctors = res;
     });
@@ -72,20 +78,32 @@ export class AddAppointmentComponent implements OnInit {
   }
 
   createAppointment() {
+
     if (!this.isFormValid) {
       this.snackbar.open('Slot not valid!', '', {
-        duration: 150
+        duration: 3000
       });
     }
-    if (!this.patientName || this.patientName.trim().length === 0) {
-      this.snackbar.open(
-        'Invalid Patiend Name. Please click on search if you have entered the Medical Record Number',
-        '',
-        {
-          duration: 300
-        }
-      );
+    if (this.user.userType != 'PATIENT') {
+      if (!this.patientName || this.patientName.trim().length === 0) {
+        this.snackbar.open(
+          'Invalid Patient Name. Please click on search if you have entered the Medical Record Number',
+          '',
+          {
+            duration: 3000
+          }
+        );
+      }
     }
+
+    if (this.user.userType === 'PATIENT') {
+      this.patientService
+        .getPatientDetailsByPhone(this.user.userPhone)
+        .subscribe((response) => {
+          this.mrNum = response.body.mrnum;
+        });
+    }
+
     const appointment: Appointment = {
       date: new Date(this.currentSelectedDate).toISOString(),
       time: (this.selectedSlot + ':00').replace(/\s/g, ''),
@@ -104,15 +122,23 @@ export class AddAppointmentComponent implements OnInit {
     this.checkAppointmnetValidity();
     if (this.isFormValid) {
       this.appointmentService
-        .createAppointment(appointment)
+        .createAppointment(appointment, true)
         .subscribe((res: Appointment) => {
-          this.snackbar.open('Appointment Created', '', {
-            duration: 300
-          });
+          if (!res) {
+            this.snackbar.open('Appointment already Exists!', '', {
+              duration: 3000
+            });
+          } else {
+            this.snackbar.open('Appointment Created', '', {
+              duration: 3000
+            });
+          }
           this.dialogRef.close();
         });
     }
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
 }

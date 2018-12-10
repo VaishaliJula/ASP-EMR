@@ -1,3 +1,4 @@
+import { LoginService } from './../login.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
@@ -8,6 +9,7 @@ import { MatDialog } from '@angular/material';
 import { AddAppointmentComponent } from '../add-appointment/add-appointment.component';
 import { AddSoapNoteComponent } from '../add-soap-note/add-soap-note.component';
 import { UpdateAppointmentComponent } from '../update-appointment/update-appointment.component';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-appointments',
@@ -28,14 +30,29 @@ export class AppointmentsComponent implements OnInit {
 
   appointments: Appointment[];
 
+  user: User
   /* Todo: HttpClient should be replaced with HttpService once the real api is available */
   constructor(
     private http: HttpClient,
     private service: AppointmentService,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private authService: LoginService
+  ) {
+    this.user = authService.getLoggedInUserDetails();
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.user.userType === 'PATIENT') {
+      this.service
+        .getAppointmentsForMrNo(this.user.userPhone)
+        .subscribe((res: Appointment[]) => (this.appointments = res))
+    }
+    else {
+      this.service
+        .getAppointmentsForCurrentDate()
+        .subscribe((res: Appointment[]) => (this.appointments = res))
+    };
+  }
 
   findAppointments() {
     this.service

@@ -17,4 +17,9 @@ export class SoapService {
     const url = `/soap/${mrNum}`;
     return this.http.get(url);
   }
+
+  getPatientSoapforPhone(phone : any){
+    const url = `/soap/phone/${phone}`;
+    return this.http.get(url); 
+  }
 }

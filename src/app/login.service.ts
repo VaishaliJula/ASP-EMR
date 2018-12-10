@@ -2,34 +2,39 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpService } from './http.service';
-import { Doctor } from './models/Doctor.model';
+import { User } from './models/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  isUserLoggedIn: boolean;
+  isUserLoggedIn: boolean; 
   userEmail: string;
-  loggedInUser: Doctor;
+  loggedInUser: User;
 
   constructor(private router: Router, private httpClient: HttpService) {
     this.isUserLoggedIn = false;
   }
 
   validateLoginStaff(formData): void {
-    const staffURL = 'staff/login';
-    const queryParams = { email: formData.email, password: formData.password };
+    const loginURL = 'login/';
+    const queryParams = { phone: formData.phone, password: formData.password };
 
     this.httpClient
-      .get(staffURL, { params: queryParams, observe: 'response' })
+      .get(loginURL, { params: queryParams, observe: 'response' })
       .subscribe((res: any) => {
         Object.keys(res.body);
 
         if (res.status === 200) {
           this.loggedInUser = res.body;
           this.isUserLoggedIn = true;
-          this.userEmail = formData.email;
-          this.router.navigate(['/dashboard']);
+          this.userEmail = formData.phone;
+          if(this.loggedInUser.userType === 'PATIENT'){
+            this.router.navigate(['/appointments']);
+          }
+          else{
+            this.router.navigate(['/dashboard']);
+          }
         }
       });
   }

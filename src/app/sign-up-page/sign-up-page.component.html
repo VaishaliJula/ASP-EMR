@@ -4,13 +4,15 @@
 </head>
 
 <body>
-    <h3 style="text-align:center">Welcome to Registration</h3>
+    <br>
+    <h3 style="text-align:center">Patient Registration</h3>
+    <br><br>
     <form [formGroup]="registrationForm" (ngSubmit)="addPatient(registrationForm.value)">
-        <div class="row">
+        <div class="row" style="padding : 10px;">
             <div class="col-sm-3">
                 <label for="salutation">Salutation</label>
                 <br>
-                <select formControlName="salutation" id="salutation">
+                <select class="form-control" formControlName="salutation" id="salutation">
                     <option [ngValue]="null">Select</option>
                     <option *ngFor="let sal of salutation" [value]="sal.id">{{sal.name}}</option>
                 </select>
@@ -24,38 +26,38 @@
             <div class="col-sm-3">
                 <label for="firstName">FirstName</label>
                 <br>
-                <input type="text" id="firstName" formControlName="firstName">
+                <input class="form-control" type="text" id="firstName" formControlName="firstName">
                 <div *ngIf="registrationForm.controls['firstName'].touched && !registrationForm.controls['firstName'].valid">
                     <span *ngIf="registrationForm.controls['firstName'].errors?.required ">
                         Please enter FirstName
                     </span>
                     <span *ngIf="registrationForm.controls['firstName'].errors?.pattern ">
-                        Firstname is alpha
+                        Only alphabets are allowed!
                     </span>
                     <span *ngIf="registrationForm.controls['firstName'].errors?.minlength ">
                         Min length is 5
                     </span>
                     <span *ngIf="registrationForm.controls['firstName'].errors?.maxlength ">
-                        Max Lenght is 10
+                        Max length is 10
                     </span>
                 </div>
             </div>
             <div class="col-sm-3">
                 <label for="lastName">LastName</label>
                 <br>
-                <input type="text" formControlName="lastName" id="lastName">
+                <input class="form-control" type="text" formControlName="lastName" id="lastName">
                 <div *ngIf="registrationForm.controls['lastName'].touched && !registrationForm.controls['lastName'].valid">
                     <span *ngIf="registrationForm.controls['lastName'].errors?.required ">
                         Please enter LastName
                     </span>
                     <span *ngIf="registrationForm.controls['lastName'].errors?.pattern ">
-                        LastName is alpha
+                        Only alphabets are allowed!
                     </span>
                     <span *ngIf="registrationForm.controls['lastName'].errors?.minlength ">
                         Min length is 5
                     </span>
                     <span *ngIf="registrationForm.controls['lastName'].errors?.maxlength ">
-                        Max Lenght is 10
+                        Max length is 10
                     </span>
                 </div>
             </div>
@@ -63,25 +65,24 @@
             <div class="col-sm-3">
                 <label for="dateofBirth">Date of Birth</label>
                 <br>
-                <input type="Date" formControlName="dob" id="dateofBirth">
+                <input class="form-control" type="Date" formControlName="dob" id="dateofBirth">
                 <div *ngIf="registrationForm.controls['dob'].touched && !registrationForm.controls['dob'].valid">
                     <span *ngIf="registrationForm.controls['dob'].hasError('required') ">
                         Please select date of birth
                     </span>
                 </div>
             </div>
-
         </div>
 
-        <div class="row">
+        <div class="row" style="padding : 10px;">
             <div class="col-sm-3">
                 <label>Gender</label>
                 <br>
                 <label class="radio-inline">
-                    <input type="radio" value="male" formControlName="gender">Male &nbsp;
+                    <input class="form-control" type="radio" value="male" formControlName="gender">Male &nbsp;
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" value="female" formControlName="gender">Female
+                    <input class="form-control" type="radio" value="female" formControlName="gender">Female
                 </label>
                 <div *ngIf="registrationForm.controls['gender'].touched && !registrationForm.controls['gender'].valid">
                     <span *ngIf="registrationForm.controls['gender'].hasError('required') ">
@@ -93,7 +94,7 @@
             <div class="col-sm-3">
                 <label for="ethinicity">Ethnicity</label>
                 <br>
-                <select id="ethinicity" formControlName="ethnicity">
+                <select class="form-control" id="ethinicity" formControlName="ethnicity">
                     <option [ngValue]="null">Select</option>
                     <option *ngFor="let ethn of ethinicity" [value]="ethn.id">{{ethn.name}}</option>
                 </select>
@@ -101,13 +102,16 @@
                     <span *ngIf="registrationForm.controls['ethnicity'].hasError('required') ">
                         Please select ethnicity
                     </span>
+                    <span *ngIf="registrationForm.controls['ethnicity'].errors?.pattern ">
+                        Only alphabets are allowed!
+                    </span>
                 </div>
             </div>
 
             <div class="col-sm-3">
                 <label for="race">Race</label>
                 <br>
-                <select id="race" formControlName="race">
+                <select class="form-control" id="race" formControlName="race">
                     <option [ngValue]="null">Select</option>
                     <option *ngFor="let rac of race" [value]="rac.id">{{rac.name}}</option>
                 </select>
@@ -119,14 +123,17 @@
             </div>
 
         </div>
-        <div class="row">
+        <div class="row" style="padding : 10px;">
             <div class="col-sm-3">
                 <label for="occupation">Occupation</label>
                 <br>
-                <input id="occupation" type="text" formControlName="occupation">
+                <input class="form-control" id="occupation" type="text" formControlName="occupation">
                 <div *ngIf="registrationForm.controls['occupation'].touched && !registrationForm.controls['occupation'].valid">
                     <span *ngIf="registrationForm.controls['occupation'].hasError('required') ">
                         Please enter Occupation
+                    </span>
+                    <span *ngIf="registrationForm.controls['occupation'].errors?.pattern ">
+                        Only alphabets are allowed!
                     </span>
                 </div>
             </div>
@@ -134,7 +141,7 @@
             <div class="col-sm-3">
                 <label for="marital">Marital Status</label>
                 <br>
-                <select id="marital" type="text" formControlName="maritalStatus">
+                <select class="form-control" id="marital" type="text" formControlName="maritalStatus">
                     <option [ngValue]="null">Select</option>
                     <option *ngFor="let marital of maritalStatus" [value]="marital.id">{{marital.name}}</option>
                 </select>
@@ -142,12 +149,13 @@
                     <span *ngIf="registrationForm.controls['maritalStatus'].hasError('required') ">
                         Please select MaritalStatus
                     </span>
+
                 </div>
             </div>
             <div class="col-sm-3">
                 <label for="disability">Disability Status</label>
                 <br>
-                <select id="disability" type="text" formControlName="disabilityStatus">
+                <select class="form-control" id="disability" type="text" formControlName="disabilityStatus">
                     <option [ngValue]="null">Select</option>
                     <option *ngFor="let disable of disability" [value]="disable.id">{{disable.name}}</option>
                 </select>
@@ -158,11 +166,11 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding : 10px;">
             <div class="col-sm-3">
                 <label>Address Line 1</label>
                 <br>
-                <input type="text" formControlName="address1">
+                <input class="form-control" type="text" formControlName="address1">
                 <div *ngIf="registrationForm.controls['address1'].touched && !registrationForm.controls['address1'].valid">
                     <span *ngIf="registrationForm.controls['address1'].errors?.required ">
                         Please enter address1
@@ -171,19 +179,19 @@
                         address1 should be alphaNumeric
                     </span>
                     <span *ngIf="registrationForm.controls['address1'].errors?.maxlength ">
-                        Max Lenght should be 30
+                        Max length should be 30
                     </span>
                 </div>
             </div>
             <div class="col-sm-3">
                 <label>Address Line 2</label>
                 <br>
-                <input type="text" formControlName="address2">
+                <input class="form-control" type="text" formControlName="address2">
             </div>
             <div class="col-sm-3">
                 <label>Zip Code</label>
                 <br>
-                <input type="number" formControlName="zip">
+                <input class="form-control" type="number" formControlName="zip">
                 <div *ngIf="registrationForm.controls['zip'].touched && !registrationForm.controls['zip'].valid">
                     <span *ngIf="registrationForm.controls['zip'].errors?.required ">
                         Zip is Required
@@ -192,14 +200,14 @@
                         Min length is 5
                     </span>
                     <span *ngIf="registrationForm.controls['zip'].errors?.maxlength ">
-                        Max lenght is 5
+                        Max length is 5
                     </span>
                 </div>
             </div>
             <div class="col-sm-3">
                 <label>City</label>
                 <br>
-                <input type="text" formControlName="city">
+                <input class="form-control" type="text" formControlName="city">
                 <div *ngIf="registrationForm.controls['city'].touched && !registrationForm.controls['city'].valid">
                     <span *ngIf="registrationForm.controls['city'].hasError('required') ">
                         Please enter city
@@ -207,21 +215,24 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding : 10px;">
             <div class="col-sm-3">
                 <label>State</label>
                 <br>
-                <input type="text" formControlName="state">
+                <input class="form-control" type="text" formControlName="state">
                 <div *ngIf="registrationForm.controls['state'].touched && !registrationForm.controls['state'].valid">
                     <span *ngIf="registrationForm.controls['state'].hasError('required') ">
                         Please enter State
+                    </span>
+                    <span *ngIf="registrationForm.controls['state'].errors?.pattern ">
+                        Only alphabets are allowed!
                     </span>
                 </div>
             </div>
             <div class="col-sm-3">
                 <label>Mobile Number</label>
                 <br>
-                <input type="number" formControlName="mobileNumber">
+                <input class="form-control" type="number" formControlName="mobileNumber">
                 <div *ngIf="registrationForm.controls['mobileNumber'].touched && !registrationForm.controls['mobileNumber'].valid">
                     <span *ngIf="registrationForm.controls['mobileNumber'].errors?.required ">
                         Telephone is Required
@@ -229,21 +240,26 @@
                     <span *ngIf="registrationForm.controls['mobileNumber'].errors?.maxlength ">
                         Enter a valid Number
                     </span>
-                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.minlenght ">
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.minlength ">
                         Enter a valid Number
                     </span>
                 </div>
             </div>
         </div>
-        <div class="row">
-
+        <div class="row" style="padding : 10px;">
             <div class="col-sm-3">
                 <label>Guardian FirstName</label>
                 <br>
-                <input type="text" formControlName="kinFirst">
+                <input class="form-control" type="text" formControlName="kinFirst">
                 <div *ngIf="registrationForm.controls['kinFirst'].touched && !registrationForm.controls['kinFirst'].valid">
                     <span *ngIf="registrationForm.controls['kinFirst'].hasError('required') ">
                         Please enter kinFirst
+                    </span>
+                    <span *ngIf="registrationForm.controls['kinFirst'].errors?.maxlength ">
+                        Maximum of 10 characters
+                    </span>
+                    <span *ngIf="registrationForm.controls['kinFirst'].errors?.pattern ">
+                        Only alphabets are allowed!
                     </span>
                 </div>
             </div>
@@ -251,10 +267,16 @@
             <div class="col-sm-3">
                 <label>Guardian LastName</label>
                 <br>
-                <input type="text" formControlName="kinLast">
+                <input class="form-control" type="text" formControlName="kinLast">
                 <div *ngIf="registrationForm.controls['kinLast'].touched && !registrationForm.controls['kinLast'].valid">
                     <span *ngIf="registrationForm.controls['kinLast'].hasError('required') ">
                         Please enter kinLast
+                    </span>
+                    <span *ngIf="registrationForm.controls['kinLast'].errors?.maxlength ">
+                        Maximum of 10 characters
+                    </span>
+                    <span *ngIf="registrationForm.controls['kinLast'].errors?.pattern ">
+                        Only alphabets are allowed!
                     </span>
                 </div>
             </div>
@@ -262,7 +284,7 @@
             <div class="col-sm-3">
                 <label>Guardian Telephone</label>
                 <br>
-                <input type="number" formControlName="kinTelephone">
+                <input class="form-control" type="number" formControlName="kinTelephone">
                 <div *ngIf="registrationForm.controls['kinTelephone'].touched && !registrationForm.controls['kinTelephone'].valid">
                     <span *ngIf="registrationForm.controls['kinTelephone'].errors?.required ">
                         Telephone is Required
@@ -278,10 +300,13 @@
             <div class="col-sm-3">
                 <label>Relationship</label>
                 <br>
-                <input type="text" formControlName="relationship">
+                <input class="form-control" type="text" formControlName="relationship">
                 <div *ngIf="registrationForm.controls['relationship'].touched && !registrationForm.controls['relationship'].valid">
                     <span *ngIf="registrationForm.controls['relationship'].hasError('required') ">
                         Please enter relationship
+                    </span>
+                    <span *ngIf="registrationForm.controls['relationship'].errors?.pattern ">
+                        Only alphabets are allowed!
                     </span>
                 </div>
             </div>
@@ -289,8 +314,7 @@
         <br>
 
         <div id="submit">
-            <input type="submit" class="btn btn-info">&nbsp;&nbsp;&nbsp;&nbsp;
-
+            <input type="submit" class="btn btn-info">
         </div>
     </form>
     <br>

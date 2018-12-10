@@ -19,7 +19,7 @@ export class LoginPageComponent implements OnInit {
   }
   createForm() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.compose([Validators.required])),
+      phone: new FormControl('', Validators.compose([Validators.required])),
       password: new FormControl('', Validators.required)
     });
   }

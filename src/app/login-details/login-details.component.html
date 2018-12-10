@@ -1,0 +1,13 @@
+<h3 *ngIf="userName" style="text-align: center">Staff's Login Details</h3>
+<br>
+<div *ngIf="userName" class="alert alert-success" style="text-align: center">
+  <strong>User Name : {{userName}} </strong> <br>
+  <strong> Password : {{password}} </strong>
+</div>
+
+<h3 *ngIf="dUserName" style="text-align: center">Staff's Login Detail</h3>
+<br>
+<div *ngIf="dUserName" class="alert alert-success" style="text-align: center">
+  <strong>User Name : {{dUserName}} </strong> <br>
+  <strong> Password : {{dPassword}} </strong>
+</div>

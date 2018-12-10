@@ -1,6 +1,6 @@
+import { User } from './../models/User';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
-import { Doctor } from '../models/Doctor.model';
 
 @Component({
   selector: 'app-main',
@@ -8,11 +8,11 @@ import { Doctor } from '../models/Doctor.model';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  doctor: Doctor;
+  user: User;
 
   constructor(private authService: LoginService) {
     this.email = authService.getLoggedInUserEmail();
-    this.doctor = authService.getLoggedInUserDetails();
+    this.user = authService.getLoggedInUserDetails();
   }
   email;
 

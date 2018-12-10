@@ -1,44 +1,35 @@
+import { Router } from '@angular/router';
 import { HttpService } from './http.service';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class RegistrationService {
-  userPhone;
-  userPassword;
+export class DoctorRegistrationService {
+
   constructor(private http: HttpService, private router: Router, private snackbar: MatSnackBar) { }
-  registerPatient(formData) {
-    let url = 'patient/addPatient';
-    return this.http.post(url,
+
+  userPhone: any;
+  userPassword: any;
+
+  registerDoctor(formData) {
+    let url = 'staff/addStaff';
+    this.http.post(url,
       {
         firstName: formData.firstName,
         lastName: formData.lastName,
-        salutation: formData.salutation,
         dob: formData.dob,
-        race: formData.race,
-        ethnicity: formData.ethnicity,
-        gender: formData.gender,
-        occupation: formData.occupation,
-        maritalStatus: formData.maritalStatus,
-        disabilityStatus: formData.disabilityStatus,
         addressline1: formData.address1,
         addressline2: formData.address2,
         zipCode: formData.zip,
         city: formData.city,
         state: formData.state,
         mobileNo: formData.mobileNumber,
-        kin_First: formData.kinFirst,
-        kin_Last: formData.kinLast,
-        kin_Telephone: formData.kinTelephone,
-        relationship: formData.relationship
+        email: formData.email
       }).subscribe((res: any) => {
         if (!res) {
-          this.snackbar.open('Phone Number Already exsists!', '', {
+          this.snackbar.open('Phone Number / Email Already exsists!', '', {
             duration: 3000
           });
           return;
@@ -47,11 +38,10 @@ export class RegistrationService {
           this.userPhone = res.userPhone;
           this.userPassword = res.password;
           this.router.navigate(['/loginDetails']);
-          this.snackbar.open('Patient Registered successfully!', '', {
+          this.snackbar.open('Doctor Registered successfully!', '', {
             duration: 3000
           });
         }
       });
   }
 }
-

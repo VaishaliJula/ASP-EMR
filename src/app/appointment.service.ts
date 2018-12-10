@@ -6,7 +6,17 @@ import { Appointment } from './models/appointment.model';
   providedIn: 'root'
 })
 export class AppointmentService {
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService) { }
+
+  getAppointmentsForMrNo(mrno: any) {
+    const url = `appointments/appointment/mrno/${mrno}`;
+    return this.http.get(url);
+  }
+
+  getAppointmentsForCurrentDate() {
+    const url = `appointments/currentDate`;
+    return this.http.get(url);
+  }
 
   getAppointmentsForDate(appDate) {
     const url = `appointments/appointment/date/${new Date(appDate).getTime()}`;
@@ -18,8 +28,8 @@ export class AppointmentService {
     return this.http.get(url);
   }
 
-  createAppointment(appointment: Appointment) {
-    const url = 'appointments/createAppointment';
+  createAppointment(appointment: Appointment, flag : boolean) {
+    const url = `appointments/createAppointment/${flag}`;
     return this.http.post(url, appointment);
   }
 }

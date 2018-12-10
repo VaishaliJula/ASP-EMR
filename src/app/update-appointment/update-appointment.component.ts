@@ -12,10 +12,10 @@ export class UpdateAppointmentComponent implements OnInit {
   //appointment: Appointment;
   set appointment(val: Appointment) {
     this._appointment = {
-      ...val,
-      date:( val.date as any instanceof Date) 
-      ? val.date 
-      : new Date(...val.date.split('-').map(Number).map((n,i) => i===1 ? n-1 : n))
+      ...val
+      // date:( val.date as any instanceof Date) 
+      // ? val.date 
+      // : new Date(val.date.split('-').map(Number).map((n,i) => i===1 ? n-1 : n))
     }
   };
   get appointment (){
@@ -35,7 +35,7 @@ export class UpdateAppointmentComponent implements OnInit {
   }
 
   update() {
-    this.appointmentService.createAppointment(this.appointment).subscribe(_ => {
+    this.appointmentService.createAppointment(this.appointment, false).subscribe(_ => {
       this.snackbar.open('Appointment Updated', '', {
         duration: 300
       });
