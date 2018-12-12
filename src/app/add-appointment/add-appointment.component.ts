@@ -35,6 +35,7 @@ export class AddAppointmentComponent implements OnInit {
       .getPatientDetails(this.mrNum)
       .subscribe((response) => {
         this.patientName = response[0].firstName + ' ' + response[0].lastName;
+        this.mrNum = response[0].mrnum;
       });
   }
 
@@ -78,7 +79,6 @@ export class AddAppointmentComponent implements OnInit {
   }
 
   createAppointment() {
-
     if (!this.isFormValid) {
       this.snackbar.open('Slot not valid!', '', {
         duration: 3000
@@ -95,15 +95,6 @@ export class AddAppointmentComponent implements OnInit {
         );
       }
     }
-
-    if (this.user.userType === 'PATIENT') {
-      this.patientService
-        .getPatientDetailsByPhone(this.user.userPhone)
-        .subscribe((response) => {
-          this.mrNum = response.body.mrnum;
-        });
-    }
-
     const appointment: Appointment = {
       date: new Date(this.currentSelectedDate).toISOString(),
       time: (this.selectedSlot + ':00').replace(/\s/g, ''),
@@ -122,23 +113,30 @@ export class AddAppointmentComponent implements OnInit {
     this.checkAppointmnetValidity();
     if (this.isFormValid) {
       this.appointmentService
-        .createAppointment(appointment, true)
-        .subscribe((res: Appointment) => {
-          if (!res) {
-            this.snackbar.open('Appointment already Exists!', '', {
+        .createAppointment(appointment, false)
+        .subscribe((res: any) => {
+          if (res.appID == 0) {
+            this.snackbar.open('Appointment already Exists on the same day!', '', {
               duration: 3000
             });
+            return;
           } else {
             this.snackbar.open('Appointment Created', '', {
               duration: 3000
             });
+            this.dialogRef.close();
           }
-          this.dialogRef.close();
         });
     }
   }
 
   ngOnInit() {
-
+    if (this.user.userType === 'PATIENT') {
+      this.patientService
+        .getPatientDetailsByPhone(this.user.userPhone)
+        .subscribe((response) => {
+          this.mrNum = response.body.mrnum;
+        });
+    }
   }
 }

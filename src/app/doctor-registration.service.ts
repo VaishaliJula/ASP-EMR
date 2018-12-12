@@ -28,7 +28,7 @@ export class DoctorRegistrationService {
         mobileNo: formData.mobileNumber,
         email: formData.email
       }).subscribe((res: any) => {
-        if (!res) {
+        if (res.userName == 'ERROR') {
           this.snackbar.open('Phone Number / Email Already exsists!', '', {
             duration: 3000
           });

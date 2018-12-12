@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -8,11 +9,11 @@ import { User } from './models/User';
   providedIn: 'root'
 })
 export class LoginService {
-  isUserLoggedIn: boolean; 
+  isUserLoggedIn: boolean;
   userEmail: string;
   loggedInUser: User;
 
-  constructor(private router: Router, private httpClient: HttpService) {
+  constructor(private router: Router, private httpClient: HttpService, private snackbar: MatSnackBar) {
     this.isUserLoggedIn = false;
   }
 
@@ -27,12 +28,18 @@ export class LoginService {
 
         if (res.status === 200) {
           this.loggedInUser = res.body;
+          if(this.loggedInUser.userName == 'ERROR'){
+            this.snackbar.open('Phone Number and Password does not match!', '', {
+              duration: 3000
+            });
+            return;
+          }
           this.isUserLoggedIn = true;
           this.userEmail = formData.phone;
-          if(this.loggedInUser.userType === 'PATIENT'){
+          if (this.loggedInUser.userType === 'PATIENT') {
             this.router.navigate(['/appointments']);
           }
-          else{
+          else {
             this.router.navigate(['/dashboard']);
           }
         }

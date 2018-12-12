@@ -35,7 +35,7 @@ export class UpdateAppointmentComponent implements OnInit {
   }
 
   update() {
-    this.appointmentService.createAppointment(this.appointment, false).subscribe(_ => {
+    this.appointmentService.createAppointment(this.appointment, true).subscribe(_ => {
       this.snackbar.open('Appointment Updated', '', {
         duration: 300
       });

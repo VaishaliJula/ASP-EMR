@@ -38,6 +38,7 @@ export class DoctorRegistrationComponent implements OnInit {
       this.snackbar.open('Please enter / correct all the fields!', '', {
         duration: 3000
       });
+      return;
     }
     else {
       this.service.registerDoctor(value);

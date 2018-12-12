@@ -12,6 +12,7 @@ export class RegistrationService {
   userPhone;
   userPassword;
   constructor(private http: HttpService, private router: Router, private snackbar: MatSnackBar) { }
+  
   registerPatient(formData) {
     let url = 'patient/addPatient';
     return this.http.post(url,
@@ -37,7 +38,7 @@ export class RegistrationService {
         kin_Telephone: formData.kinTelephone,
         relationship: formData.relationship
       }).subscribe((res: any) => {
-        if (!res) {
+        if (res.userName === 'ERROR') {
           this.snackbar.open('Phone Number Already exsists!', '', {
             duration: 3000
           });
