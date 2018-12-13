@@ -54,6 +54,12 @@ export class AppointmentsComponent implements OnInit {
     };
   }
 
+  appointmentsForCurrentDate() {
+    this.service
+      .getAppointmentsForCurrentDate()
+      .subscribe((res: Appointment[]) => (this.appointments = res))
+  }
+
   findAppointments() {
     this.service
       .getAppointmentsForDate(this.currentSelectedDate)
@@ -62,7 +68,7 @@ export class AppointmentsComponent implements OnInit {
 
   openAddAppointment() {
     const dialogRef = this.dialog.open(AddAppointmentComponent);
-    dialogRef.afterClosed().subscribe(_ => this.findAppointments());
+    dialogRef.afterClosed().subscribe(_ => this.appointmentsForCurrentDate());
   }
 
   openSoapNoteDialog(mrNum: number) {
@@ -74,12 +80,12 @@ export class AppointmentsComponent implements OnInit {
   }
 
   openUpdateAppointment(app: Appointment) {
-    const dialogRef = this.dialog.open(UpdateAppointmentComponent, {
+    const dialogRef = this.dialog.open(UpdateAppointmentComponent,  {
       data: {
         appointment: app
       }
     });
-    dialogRef.afterClosed().subscribe(_ => this.findAppointments());
+    dialogRef.afterClosed().subscribe(_ => this.appointmentsForCurrentDate());
   }
 
   onDateSelect(date: NgbDate) {

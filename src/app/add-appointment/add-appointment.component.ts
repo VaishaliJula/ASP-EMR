@@ -1,3 +1,4 @@
+import { AppointmentsComponent } from './../appointments/appointments.component';
 import { User } from './../models/User';
 import { LoginService } from 'src/app/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -28,16 +29,36 @@ export class AddAppointmentComponent implements OnInit {
   healthCondition;
   medication;
   user: User
+  firstName: string
+  lastName: string
 
 
   findPatient() {
     this.patientService
       .getPatientDetails(this.mrNum)
       .subscribe((response) => {
+        if (response[0].firstName === 'ERROR') {
+          this.snackbar.open('Patient Not Found!', '', {
+            duration: 3000
+          })
+          return;
+        }
         this.patientName = response[0].firstName + ' ' + response[0].lastName;
         this.mrNum = response[0].mrnum;
       });
   }
+
+  // findPatient() {
+  //     this.patientService.getPatientDetailsByName(this.firstName, this.lastName).subscribe(patientObj => {
+  //        this.patientName = patientObj.body;
+  //       if (this.patients[0].firstName === 'ERROR') {
+  //         this.snackbar.open('Patient not found!', '', {
+  //           duration: 3000
+  //         });
+  //       }
+
+  //     });
+  //   }
 
   checkAppointmnetValidity() {
     const date = new Date(this.currentSelectedDate).getTime();
@@ -60,7 +81,7 @@ export class AddAppointmentComponent implements OnInit {
     private appointmentService: AppointmentService,
     private snackbar: MatSnackBar,
     private authService: LoginService,
-    private dialogRef: MatDialogRef<AddAppointmentComponent>
+    private dialogRef: MatDialogRef<AddAppointmentComponent>,
   ) {
     this.user = authService.getLoggedInUserDetails();
     this.staffService.getAllDoctors().subscribe((res: Doctor[]) => {

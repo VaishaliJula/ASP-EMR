@@ -16,6 +16,7 @@ export class AddSoapNoteComponent implements OnInit {
   objective;
   assessment;
   plan;
+  mobileNo;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
@@ -36,7 +37,7 @@ export class AddSoapNoteComponent implements OnInit {
         mrnum: this.mrNum
       },
       hospitalStaff: {
-        email: this.loginService.getLoggedInUserEmail()
+        mobileNo: this.loginService.getLoggedInUserEmail()
       }
     };
     this.soapService.addSoap(soap).subscribe(_ => this.dialogRef.close());

@@ -55,13 +55,13 @@ export class PatientChartsComponent implements OnInit {
     if (this.mrNum) {
       this.patientService.getPatientDetails(this.mrNum).subscribe(patientObj => {
         this.patients = patientObj;
-        if(!this.patients){
+        if (!this.patients) {
           this.snackbar.open('Patient not found!', '', {
             duration: 3000
           });
         }
         else {
-          for (var i = 0; i < this.patients.length; i++){
+          for (var i = 0; i < this.patients.length; i++) {
             this.patients[i].addr =
               this.patients[i].addressline1 +
               '\n' +
@@ -72,8 +72,8 @@ export class PatientChartsComponent implements OnInit {
               this.patients[i].state +
               '\n' +
               this.patients[i].zipCode;
-          }  
-        }        
+          }
+        }
       });
     } else if (this.firstName || this.lastName) {
       if (this.firstName && !this.lastName) {
@@ -83,6 +83,11 @@ export class PatientChartsComponent implements OnInit {
       }
       this.patientService.getPatientDetailsByName(this.firstName, this.lastName).subscribe(patientObj => {
         this.patients = patientObj.body;
+        if (this.patients[0].firstName === 'ERROR') {
+          this.snackbar.open('Patient not found!', '', {
+            duration: 3000
+          });
+        }
         for (var i = 0; i < this.patients.length; i++)
           this.patients[i].addr =
             this.patients[i].addressline1 +

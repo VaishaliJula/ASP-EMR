@@ -18,13 +18,13 @@
                         Please enter FirstName
                     </span>
                     <span *ngIf="registrationForm.controls['firstName'].errors?.pattern ">
-                        Firstname is alpha
+                        First Name is alpha
                     </span>
                     <span *ngIf="registrationForm.controls['firstName'].errors?.minlength ">
                         Min length is 5
                     </span>
                     <span *ngIf="registrationForm.controls['firstName'].errors?.maxlength ">
-                        Max Lenght is 10
+                        Max Length is 10
                     </span>
                     <span *ngIf="registrationForm.controls['firstName'].errors?.pattern ">
                         Only alphabets are allowed!
@@ -40,13 +40,13 @@
                         Please enter LastName
                     </span>
                     <span *ngIf="registrationForm.controls['lastName'].errors?.pattern ">
-                        LastName is alpha
+                        Last Name is alpha
                     </span>
                     <span *ngIf="registrationForm.controls['lastName'].errors?.minlength ">
                         Min length is 5
                     </span>
                     <span *ngIf="registrationForm.controls['lastName'].errors?.maxlength ">
-                        Max Lenght is 10
+                        Max Length is 10
                     </span>
                     <span *ngIf="registrationForm.controls['firstName'].errors?.pattern ">
                         Only alphabets are allowed!
@@ -95,11 +95,11 @@
                     <span *ngIf="registrationForm.controls['zip'].errors?.required ">
                         Zip is Required
                     </span>
-                    <span *ngIf="registrationForm.controls['zip'].errors?.maxlength ">
-                        Minimum length is 5
-                    </span>
-                    <span *ngIf="registrationForm.controls['zip'].errors?.minlength ">
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.maxlength ">
                         Maximum length is 5
+                    </span>
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.minlength ">
+                        Minimum length is 5
                     </span>
                     <span *ngIf="registrationForm.controls['zip'].errors?.pattern ">
                         Only Numbers are allowed!
@@ -144,10 +144,10 @@
                         Telephone is Required
                     </span>
                     <span *ngIf="registrationForm.controls['mobileNumber'].errors?.maxlength ">
-                        Minimum length is 10
+                        Maximum length is 10
                     </span>
                     <span *ngIf="registrationForm.controls['mobileNumber'].errors?.minlength ">
-                        Maximum length is 10
+                        Minimum length is 10
                     </span>
                     <span *ngIf="registrationForm.controls['mobileNumber'].errors?.pattern ">
                         Only Numbers are allowed!
