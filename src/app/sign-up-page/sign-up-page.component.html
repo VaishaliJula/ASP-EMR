@@ -290,7 +290,7 @@
             <div class="col-sm-3">
                 <label>Guardian Telephone</label>
                 <br>
-                <input class="form-control" type="number" formControlName="kinTelephone">
+                <input class="form-control" type="text" formControlName="kinTelephone">
                 <div *ngIf="registrationForm.controls['kinTelephone'].touched && !registrationForm.controls['kinTelephone'].valid">
                     <span *ngIf="registrationForm.controls['kinTelephone'].errors?.required ">
                         Telephone is Required
