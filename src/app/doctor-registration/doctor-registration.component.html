@@ -1,3 +1,7 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 <body>
     <br>
     <h3 style="text-align:center">Doctor Registration</h3>
@@ -5,7 +9,7 @@
 
     <form [formGroup]="registrationForm" (ngSubmit)="addDoctor(registrationForm.value)">
         <div class="row" style="padding: 10px;">
-            <div class="col-sm-3">
+            <div class="col-sm-3">p
                 <label for="firstName">FirstName</label>
                 <br>
                 <input class="form-control" type="text" id="firstName" formControlName="firstName">
@@ -86,16 +90,19 @@
             <div class="col-sm-3">
                 <label>Zip Code</label>
                 <br>
-                <input class="form-control" type="number" formControlName="zip">
+                <input class="form-control" type="text" formControlName="zip">
                 <div *ngIf="registrationForm.controls['zip'].touched && !registrationForm.controls['zip'].valid">
                     <span *ngIf="registrationForm.controls['zip'].errors?.required ">
                         Zip is Required
                     </span>
-                    <span *ngIf="registrationForm.controls['zip'].errors?.minlength ">
-                        Min length is 5
-                    </span>
                     <span *ngIf="registrationForm.controls['zip'].errors?.maxlength ">
-                        Max lenght is 5
+                        Minimum length is 5
+                    </span>
+                    <span *ngIf="registrationForm.controls['zip'].errors?.minlength ">
+                        Maximum length is 5
+                    </span>
+                    <span *ngIf="registrationForm.controls['zip'].errors?.pattern ">
+                        Only Numbers are allowed!
                     </span>
                 </div>
             </div>
@@ -131,16 +138,19 @@
             <div class="col-sm-3">
                 <label>Mobile Number</label>
                 <br>
-                <input class="form-control" type="number" formControlName="mobileNumber">
+                <input class="form-control" type="text" formControlName="mobileNumber">
                 <div *ngIf="registrationForm.controls['mobileNumber'].touched && !registrationForm.controls['mobileNumber'].valid">
                     <span *ngIf="registrationForm.controls['mobileNumber'].errors?.required ">
                         Telephone is Required
                     </span>
                     <span *ngIf="registrationForm.controls['mobileNumber'].errors?.maxlength ">
-                        Enter a valid Number
+                        Minimum length is 10
                     </span>
-                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.minlenght ">
-                        Enter a valid Number
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.minlength ">
+                        Maximum length is 10
+                    </span>
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.pattern ">
+                        Only Numbers are allowed!
                     </span>
                 </div>
             </div>
@@ -160,7 +170,7 @@
         </div>
         <br><br>
         <div id="submit">
-            <input type="submit" class="btn btn-info">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" class="btn btn-info">
         </div>
     </form>
 </body>

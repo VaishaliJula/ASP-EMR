@@ -191,7 +191,7 @@
             <div class="col-sm-3">
                 <label>Zip Code</label>
                 <br>
-                <input class="form-control" type="number" formControlName="zip">
+                <input class="form-control" type="text" formControlName="zip">
                 <div *ngIf="registrationForm.controls['zip'].touched && !registrationForm.controls['zip'].valid">
                     <span *ngIf="registrationForm.controls['zip'].errors?.required ">
                         Zip is Required
@@ -201,6 +201,9 @@
                     </span>
                     <span *ngIf="registrationForm.controls['zip'].errors?.maxlength ">
                         Max length is 5
+                    </span>
+                    <span *ngIf="registrationForm.controls['zip'].errors?.pattern ">
+                        Only Numbers are allowed!
                     </span>
                 </div>
             </div>
@@ -232,16 +235,19 @@
             <div class="col-sm-3">
                 <label>Mobile Number</label>
                 <br>
-                <input class="form-control" type="number" formControlName="mobileNumber">
+                <input class="form-control" type="text" formControlName="mobileNumber">
                 <div *ngIf="registrationForm.controls['mobileNumber'].touched && !registrationForm.controls['mobileNumber'].valid">
                     <span *ngIf="registrationForm.controls['mobileNumber'].errors?.required ">
                         Telephone is Required
                     </span>
                     <span *ngIf="registrationForm.controls['mobileNumber'].errors?.maxlength ">
-                        Enter a valid Number
+                        Minimum length is 10
                     </span>
                     <span *ngIf="registrationForm.controls['mobileNumber'].errors?.minlength ">
-                        Enter a valid Number
+                        Maximum length is 10
+                    </span>
+                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.pattern ">
+                        Only Numbers are allowed!
                     </span>
                 </div>
             </div>
@@ -290,10 +296,13 @@
                         Telephone is Required
                     </span>
                     <span *ngIf="registrationForm.controls['kinTelephone'].errors?.maxlength ">
-                        Enter a valid Number
+                        Minimum length is 10
                     </span>
                     <span *ngIf="registrationForm.controls['kinTelephone'].errors?.minlength ">
-                        Enter a valid Number
+                        Maximum length is 10
+                    </span>
+                    <span *ngIf="registrationForm.controls['kinTelephone'].errors?.pattern ">
+                        Only Numbers are allowed!
                     </span>
                 </div>
             </div>

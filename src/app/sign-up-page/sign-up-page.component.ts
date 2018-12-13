@@ -62,13 +62,13 @@ export class SignUpPageComponent implements OnInit {
       disabilityStatus: new FormControl(null, Validators.required),
       address1: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(30)])),
       address2: new FormControl(""),
-      zip: new FormControl("", Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5)])),
+      zip: new FormControl("", Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern("^[0-9]+$")])),
       city: new FormControl("", Validators.compose([Validators.required, Validators.pattern("^[a-zA-Z ]+$")])),
       state: new FormControl("", Validators.compose([Validators.required, Validators.pattern("^[a-zA-Z ]+$")])),
-      mobileNumber: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(10)])),
+      mobileNumber: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(9), Validators.pattern("^[0-9]+$")])),
       kinFirst: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(10), Validators.pattern("^[a-zA-Z]+$")])),
       kinLast: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(10), Validators.pattern("^[a-zA-Z]+$")])),
-      kinTelephone: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(10)])),
+      kinTelephone: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(10), Validators.pattern("^[0-9]+$")])),
       relationship: new FormControl("", Validators.compose([Validators.required, Validators.pattern("^[a-zA-Z]+$")])),
     });
   }
