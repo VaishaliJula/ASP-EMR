@@ -12,6 +12,7 @@ export class LoginService {
   isUserLoggedIn: boolean;
   userEmail: string;
   loggedInUser: User;
+  email: string
 
   constructor(private router: Router, private httpClient: HttpService, private snackbar: MatSnackBar) {
     this.isUserLoggedIn = false;
@@ -28,7 +29,7 @@ export class LoginService {
 
         if (res.status === 200) {
           this.loggedInUser = res.body;
-          if(this.loggedInUser.userName == 'ERROR'){
+          if (this.loggedInUser.userName == 'ERROR') {
             this.snackbar.open('Phone Number and Password does not match!', '', {
               duration: 3000
             });
@@ -36,6 +37,7 @@ export class LoginService {
           }
           this.isUserLoggedIn = true;
           this.userEmail = formData.phone;
+          this.email = this.loggedInUser.email
           if (this.loggedInUser.userType === 'PATIENT') {
             this.router.navigate(['/appointments']);
           }
@@ -63,7 +65,7 @@ export class LoginService {
   }
 
   getLoggedInUserEmail() {
-    return this.userEmail;
+    return this.email;
   }
 
   getLoggedInUserDetails() {

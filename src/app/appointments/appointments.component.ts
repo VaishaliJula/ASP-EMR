@@ -85,7 +85,7 @@ export class AppointmentsComponent implements OnInit {
         appointment: app
       }
     });
-    dialogRef.afterClosed().subscribe(_ => this.appointmentsForCurrentDate());
+    dialogRef.afterClosed().subscribe(_ => this.findAppointments());
   }
 
   onDateSelect(date: NgbDate) {

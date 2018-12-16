@@ -14,6 +14,9 @@ export class DoctorRegistrationService {
   userPassword: any;
 
   registerDoctor(formData) {
+    this.userPassword = null;
+    this.userPhone = null;
+
     let url = 'staff/addStaff';
     this.http.post(url,
       {

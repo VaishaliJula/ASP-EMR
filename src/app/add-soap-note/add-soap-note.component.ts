@@ -37,7 +37,7 @@ export class AddSoapNoteComponent implements OnInit {
         mrnum: this.mrNum
       },
       hospitalStaff: {
-        mobileNo: this.loginService.getLoggedInUserEmail()
+        email: this.loginService.getLoggedInUserEmail()
       }
     };
     this.soapService.addSoap(soap).subscribe(_ => this.dialogRef.close());

@@ -12,8 +12,10 @@ export class RegistrationService {
   userPhone;
   userPassword;
   constructor(private http: HttpService, private router: Router, private snackbar: MatSnackBar) { }
-  
+
   registerPatient(formData) {
+    this.userPassword = null;
+    this.userPhone = null
     let url = 'patient/addPatient';
     return this.http.post(url,
       {
