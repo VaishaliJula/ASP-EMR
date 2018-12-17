@@ -3,19 +3,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
+import { DoctorRegistrationService } from 'src/app/doctor-registration.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistrationService {
-  userPhone;
-  userPassword;
+  userPhone : string = null;
+  userPassword : string = null;
   constructor(private http: HttpService, private router: Router, private snackbar: MatSnackBar) { }
 
   registerPatient(formData) {
-    this.userPassword = null;
-    this.userPhone = null
+   
     let url = 'patient/addPatient';
     return this.http.post(url,
       {

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { SoapService } from '../soap.service';
 import { Soap } from '../models/Soap.model';
 import { LoginService } from '../login.service';
@@ -22,7 +22,8 @@ export class AddSoapNoteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data: any,
     private soapService: SoapService,
     private loginService: LoginService,
-    private dialogRef: MatDialogRef<AddSoapNoteComponent>
+    private dialogRef: MatDialogRef<AddSoapNoteComponent>,
+    private snackbar: MatSnackBar
   ) {
     this.mrNum = data.mrNum;
   }
@@ -40,7 +41,18 @@ export class AddSoapNoteComponent implements OnInit {
         email: this.loginService.getLoggedInUserEmail()
       }
     };
-    this.soapService.addSoap(soap).subscribe(_ => this.dialogRef.close());
+    this.soapService.addSoap(soap)
+      .subscribe(
+      _ => {
+        this.dialogRef.close(); this.snackbar.open("Soap Note added successfully!", '', {
+          duration: 3000
+        })
+      },
+      err => {
+        this.snackbar.open("Error adding Soap Note", '', {
+          duration: 3000
+        });
+      });
   }
 
   ngOnInit() { }

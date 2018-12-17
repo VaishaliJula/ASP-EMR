@@ -4,3 +4,6 @@
 @import './styles/datepicker-overrides.css';
 
 /* @import '~font-awesome/dist/css/font-awesome.min.css'; */
+.cdk-overlay-pane {
+    overflow-y: auto;
+}

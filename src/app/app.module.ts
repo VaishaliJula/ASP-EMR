@@ -65,6 +65,7 @@ import { UpdateAppointmentComponent } from './update-appointment/update-appointm
 import { PatientChartsComponent } from './patient-charts/patient-charts.component';
 import { LoginDetailsComponent } from './login-details/login-details.component';
 import { DoctorRegistrationComponent } from './doctor-registration/doctor-registration.component';
+import { UpdatePatientPersonaldetailsComponent } from './update-patient-personaldetails/update-patient-personaldetails.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { DoctorRegistrationComponent } from './doctor-registration/doctor-regist
     UpdateAppointmentComponent,
     PatientChartsComponent,
     LoginDetailsComponent,
-    DoctorRegistrationComponent
+    DoctorRegistrationComponent,
+    UpdatePatientPersonaldetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -135,7 +137,8 @@ import { DoctorRegistrationComponent } from './doctor-registration/doctor-regist
   entryComponents: [
     AddAppointmentComponent,
     AddSoapNoteComponent,
-    UpdateAppointmentComponent
+    UpdateAppointmentComponent,
+    UpdatePatientPersonaldetailsComponent
   ]
 })
 export class AppModule {}

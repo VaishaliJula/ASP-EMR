@@ -9,13 +9,14 @@ import { AppointmentService } from '../appointment.service';
   styleUrls: ['./update-appointment.component.css']
 })
 export class UpdateAppointmentComponent implements OnInit {
-  //appointment: Appointment;
+  // appointment: Appointment;
   set appointment(val: Appointment) {
+    const date: any = val.date.split('-').map(Number).map((n,i) => i===1 ? n-1 : n)
     this._appointment = {
-      ...val
-      // date:( val.date as any instanceof Date) 
-      // ? val.date 
-      // : new Date(val.date.split('-').map(Number).map((n,i) => i===1 ? n-1 : n))
+      ...val,
+      date:( val.date as any instanceof Date) 
+      ? val.date 
+      : new (Date as any)(...date) // date is like [2018, 11, 1] => new Date(2018, 11, 1)
     }
   };
   get appointment (){

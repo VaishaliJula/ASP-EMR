@@ -2,20 +2,22 @@ import { Router } from '@angular/router';
 import { HttpService } from './http.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
+import { RegistrationService } from 'src/app/registration.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorRegistrationService {
 
-  constructor(private http: HttpService, private router: Router, private snackbar: MatSnackBar) { }
+  constructor(private http: HttpService, private router: Router, private snackbar: MatSnackBar, private authService: RegistrationService) { }
 
-  userPhone: any;
-  userPassword: any;
+  userPhone: string = null;
+  userPassword: string = null;
 
+  
   registerDoctor(formData) {
-    this.userPassword = null;
-    this.userPhone = null;
+    this.authService.userPassword = null;
+    this.authService.userPhone = null;
 
     let url = 'staff/addStaff';
     this.http.post(url,

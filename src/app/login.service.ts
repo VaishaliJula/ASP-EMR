@@ -26,7 +26,7 @@ export class LoginService {
       .get(loginURL, { params: queryParams, observe: 'response' })
       .subscribe((res: any) => {
         Object.keys(res.body);
-
+        console.log("Testttttttttttt", res.body);
         if (res.status === 200) {
           this.loggedInUser = res.body;
           if (this.loggedInUser.userName == 'ERROR') {
@@ -66,6 +66,7 @@ export class LoginService {
 
   getLoggedInUserEmail() {
     return this.email;
+    
   }
 
   getLoggedInUserDetails() {
