@@ -51,8 +51,8 @@ export class SignUpPageComponent implements OnInit {
   createForm() {
     this.registrationForm = new FormGroup({
       salutation: new FormControl(null, Validators.required),
-      firstName: new FormControl("", Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10), Validators.pattern("^[a-zA-Z]+$")])),
-      lastName: new FormControl("", Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10), Validators.pattern("^[a-zA-Z]+$")])),
+      firstName: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(20), Validators.pattern("^[a-zA-Z]+$")])),
+      lastName: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(20), Validators.pattern("^[a-zA-Z]+$")])),
       gender: new FormControl("", Validators.required),
       dob: new FormControl("", Validators.required),
       race: new FormControl(null, Validators.required),

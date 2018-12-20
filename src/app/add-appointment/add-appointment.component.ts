@@ -9,6 +9,7 @@ import { HospitalStaffService } from '../hospital-staff.service';
 import { AppointmentService } from '../appointment.service';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
 import { Appointment } from '../models/appointment.model';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-appointment',
@@ -31,6 +32,11 @@ export class AddAppointmentComponent implements OnInit {
   user: User
   firstName: string
   lastName: string
+  patientSearchText: Patient = {} as Patient;
+  filteredPatients;
+
+  patientSearchTimeout;
+  patientSearchSubscription;
 
 
   findPatient() {
@@ -99,22 +105,30 @@ export class AddAppointmentComponent implements OnInit {
     }
   }
 
+  formatPatientObj(patient: Patient) {
+    return patient && patient.firstName;
+  }
+
+  updatePatientList(event) {
+    const firstName = event.target.value;
+    if (this.patientSearchTimeout) {
+      clearTimeout(this.patientSearchTimeout);
+    }
+    this.patientSearchTimeout = setTimeout(() => {
+      if (this.patientSearchSubscription) {
+        this.patientSearchSubscription.unsubscribe();
+      }
+      this.patientSearchSubscription = this.patientService.getPatientDetailsByName(firstName, '')
+        .pipe(map((response: any) => response.body))
+        .subscribe(data => this.filteredPatients = data);
+    }, 300);
+  }
+
   createAppointment() {
     if (!this.isFormValid) {
-      this.snackbar.open('Slot not valid!', '', {
+      return this.snackbar.open('Slot not valid!', '', {
         duration: 3000
       });
-    }
-    if (this.user.userType != 'PATIENT') {
-      if (!this.patientName || this.patientName.trim().length === 0) {
-        this.snackbar.open(
-          'Invalid Patient Name. Please click on search if you have entered the Medical Record Number',
-          '',
-          {
-            duration: 3000
-          }
-        );
-      }
     }
     const appointment: Appointment = {
       date: new Date(this.currentSelectedDate).toISOString(),
@@ -125,7 +139,7 @@ export class AddAppointmentComponent implements OnInit {
       lastMedication: this.medication,
       status: 'PENDING',
       patient: {
-        mrnum: this.mrNum
+        mrnum: this.patientSearchText.mrnum
       },
       hospitalStaff: {
         email: this.selectedDoctorId

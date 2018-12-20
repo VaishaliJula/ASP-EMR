@@ -65,9 +65,8 @@ export class PatientChartsComponent implements OnInit {
           this.snackbar.open('Patient not found!', '', {
             duration: 3000
           });
-        }
-        else {
-          for (var i = 0; i < this.patients.length; i++) {
+        } else {
+          for (let i = 0; i < this.patients.length; i++) {
             this.patients[i].addr =
               this.patients[i].addressline1 +
               '\n' +
@@ -96,7 +95,7 @@ export class PatientChartsComponent implements OnInit {
           this.patients = [];
           return;
         }
-        for (var i = 0; i < this.patients.length; i++)
+        for (let i = 0; i < this.patients.length; i++) {
           this.patients[i].addr =
             this.patients[i].addressline1 +
             '\n' +
@@ -107,6 +106,7 @@ export class PatientChartsComponent implements OnInit {
             this.patients[i].state +
             '\n' +
             this.patients[i].zipCode;
+          }
       });
     }
   }

@@ -19,8 +19,8 @@ export class DoctorRegistrationComponent implements OnInit {
 
   createForm() {
     this.registrationForm = new FormGroup({
-      firstName: new FormControl("", Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10), Validators.pattern("^[a-zA-Z]+$")])),
-      lastName: new FormControl("", Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10), Validators.pattern("^[a-zA-Z]+$")])),
+      firstName: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(20), Validators.pattern("^[a-zA-Z]+$")])),
+      lastName: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(20), Validators.pattern("^[a-zA-Z]+$")])),
       dob: new FormControl("", Validators.required),
       address1: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(30)])),
       address2: new FormControl(""),
