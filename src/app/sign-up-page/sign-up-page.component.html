@@ -65,7 +65,7 @@
             <div class="col-sm-3">
                 <label for="dateofBirth">Date of Birth</label>
                 <br>
-                <input class="form-control" type="Date" formControlName="dob" id="dateofBirth">
+                <input class="form-control" type="Date" formControlName="dob" id="dateofBirth" [max]="today">
                 <div *ngIf="registrationForm.controls['dob'].touched && !registrationForm.controls['dob'].valid">
                     <span *ngIf="registrationForm.controls['dob'].hasError('required') ">
                         Please select date of birth
@@ -323,7 +323,7 @@
         <br>
 
         <div id="submit">
-            <input type="submit" class="btn btn-info">
+            <input type="submit" class="btn btn-info" [disabled]="registrationForm.invalid">
         </div>
     </form>
     <br>

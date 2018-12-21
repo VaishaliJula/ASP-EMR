@@ -1,74 +1,81 @@
-<div class="col-lg-6">
-  <br>
-  <h4 style="text-align:center">Patient Details</h4>
-  <br>
-  <div class="row">
-    <div class="container" *ngIf="this.user.userType === 'PATIENT'">
-      <div class="row">
-        <div class="col-lg-6">
-          <mat-form-field>
-            <input class="form-control" matInput [(ngModel)]="patientUser.firstName" placeholder="First Name" disabled />
+<form #updateForm="ngForm">
+  <div class="col-lg-6">
+    <br>
+    <h4 style="text-align:center">Patient Details</h4>
+    <br>
+    <div class="row">
+      <div class="container" *ngIf="this.user.userType === 'PATIENT'">
+        <div class="row">
+          <div class="col-lg-6">
+            <mat-form-field>
+              <input class="form-control" matInput [(ngModel)]="patientUser.firstName" placeholder="First Name" disabled name="firstName" />
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6">
+            <mat-form-field>
+              <input class="form-control" matInput [(ngModel)]="patientUser.lastName" placeholder="Last Name" disabled name="lastName" />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="col-lg-12">
+            <input class="form-control" matInput [(ngModel)]="patientUser.dob" placeholder="DoB" disabled name="dateOfBirth" />
           </mat-form-field>
         </div>
-        <div class="col-lg-6">
-          <mat-form-field>
-            <input class="form-control" matInput [(ngModel)]="patientUser.lastName" placeholder="Last Name" disabled />
+        <div class="row">
+          <mat-form-field class="col-lg-6">
+            <input class="form-control" style="height: 50px; width: 200px" matInput [(ngModel)]="patientUser.addressline1" placeholder="addressline1"
+              required name="addressLine1"
+            />
+          </mat-form-field>
+          <mat-form-field class="col-lg-6">
+            <input class="form-control" style="height: 50px; width: 200px" matInput [(ngModel)]="patientUser.addressline2" placeholder="addressline2"
+              name="addressLine2"
+            />
           </mat-form-field>
         </div>
+        <div class="row">
+          <mat-form-field class="col-lg-6">
+            <input class="form-control" style="height: 50px; width: 200px" matInput [(ngModel)]="patientUser.city" placeholder="city"
+              required name="patientCity"
+            />
+          </mat-form-field>
+          <mat-form-field class="col-lg-6">
+            <input class="form-control" style="height: 50px; width: 200px" matInput [(ngModel)]="patientUser.state" placeholder="state"
+              required name="patientState"
+            />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="col-lg-12">
+            <input class="form-control" style="height: 50px; width: 200px" matInput [(ngModel)]="patientUser.zipCode" placeholder="zipCode"
+              required name="userZip" pattern="(^\d{5}$)|(^\d{5}-\d{4}$)"
+            />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="col-lg-6">
+            <input class="form-control" matInput [(ngModel)]="patientUser.mobileNo" placeholder="Phone" required name="userPhone" />
+          </mat-form-field>
+          <mat-form-field class="col-lg-6">
+            <input class="form-control" matInput [(ngModel)]="patientUser.gender" placeholder="Gender" required name="userGender" />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="col-lg-6">
+            <input class="form-control" matInput [(ngModel)]="patientUser.occupation" placeholder="Occupation" name="ocupation" />
+          </mat-form-field>
+          <mat-form-field class="col-lg-6">
+            <input class="form-control" matInput [(ngModel)]="patientUser.race" placeholder="Race" name="race" />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <button class="col-lg-1" (click)="updatePatient()" type="button" mat-raised-button [disabled]="updateForm.invalid">
+            Update
+          </button>
+        </div>
       </div>
-  
-      <div class="row">
-        <mat-form-field class="col-lg-12">
-          <input class="form-control" matInput [(ngModel)]="patientUser.dob" placeholder="DoB" disabled />
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="col-lg-6">
-          <input class="form-control" style="height: 50px; width: 200px" matInput [(ngModel)]="patientUser.addressline1" placeholder="addressline1"
-          />
-        </mat-form-field>
-        <mat-form-field class="col-lg-6">
-          <input class="form-control" style="height: 50px; width: 200px" matInput [(ngModel)]="patientUser.addressline2" placeholder="addressline2"
-           />
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="col-lg-6">
-          <input class="form-control" style="height: 50px; width: 200px" matInput [(ngModel)]="patientUser.city" placeholder="city"
-          />
-        </mat-form-field>
-        <mat-form-field class="col-lg-6">
-          <input class="form-control" style="height: 50px; width: 200px" matInput [(ngModel)]="patientUser.state" placeholder="state"
-           />
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="col-lg-12">
-          <input class="form-control" style="height: 50px; width: 200px" matInput [(ngModel)]="patientUser.zipCode" placeholder="zipCode"
-          />
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="col-lg-6">
-          <input class="form-control" matInput [(ngModel)]="patientUser.mobileNo" placeholder="Phone" />
-        </mat-form-field>
-        <mat-form-field class="col-lg-6">
-          <input class="form-control" matInput [(ngModel)]="patientUser.gender" placeholder="Gender" />
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="col-lg-6">
-          <input class="form-control" matInput [(ngModel)]="patientUser.occupation" placeholder="Occupation" />
-        </mat-form-field>
-        <mat-form-field class="col-lg-6">
-          <input class="form-control" matInput [(ngModel)]="patientUser.race" placeholder="Race"/>
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <button class="col-lg-1" (click)="updatePatient()" mat-raised-button>
-          Update
-        </button>
-      </div>
-    </div>      
-  </div>
-  </div>
+    </div>
+    </div>
+</form>

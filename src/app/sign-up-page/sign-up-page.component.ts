@@ -1,3 +1,4 @@
+import { DateUtilsService } from './../date-utils.service';
 import { User } from './../models/User';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -22,6 +23,8 @@ export class SignUpPageComponent implements OnInit {
     { id: 3, name: 'Mrs' },
   ];
 
+  today = this.dateUtils.formatForDomInput(new Date());
+
   race = [
     { id: 1, name: 'American Indian or Alaska Native' },
     { id: 2, name: 'Asian' },
@@ -42,7 +45,7 @@ export class SignUpPageComponent implements OnInit {
   ];
 
   registrationForm;
-  constructor(private service: RegistrationService, private snackbar: MatSnackBar, private router: Router) { }
+  constructor(private service: RegistrationService, private snackbar: MatSnackBar, private router: Router, private dateUtils: DateUtilsService) { }
 
   ngOnInit() {
     this.createForm();

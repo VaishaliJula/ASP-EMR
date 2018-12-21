@@ -1,3 +1,4 @@
+import { DateUtilsService } from './../date-utils.service';
 import { AppointmentsComponent } from './../appointments/appointments.component';
 import { User } from './../models/User';
 import { LoginService } from 'src/app/login.service';
@@ -38,6 +39,9 @@ export class AddAppointmentComponent implements OnInit {
   patientSearchTimeout;
   patientSearchSubscription;
 
+  today = new Date();
+  minAllowedDate = this.dateUtils.addDays(this.today, -1);
+  maxAllowedDate = this.dateUtils.addMonths(this.today, 1);
 
   findPatient() {
     this.patientService
@@ -88,6 +92,7 @@ export class AddAppointmentComponent implements OnInit {
     private snackbar: MatSnackBar,
     private authService: LoginService,
     private dialogRef: MatDialogRef<AddAppointmentComponent>,
+    private dateUtils: DateUtilsService
   ) {
     this.user = authService.getLoggedInUserDetails();
     this.staffService.getAllDoctors().subscribe((res: Doctor[]) => {
