@@ -30,7 +30,7 @@ export class AppointmentsComponent implements OnInit {
 
   appointments: Appointment[];
 
-  user: User
+  user: User;
   /* Todo: HttpClient should be replaced with HttpService once the real api is available */
   constructor(
     private http: HttpClient,
@@ -42,22 +42,23 @@ export class AppointmentsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.fetchAppointmentsForCurrentDate();
+  }
+
+  fetchAppointmentsForCurrentDate() {
     if (this.user.userType === 'PATIENT') {
       this.service
         .getAppointmentsForMrNo(this.user.userPhone)
-        .subscribe((res: Appointment[]) => (this.appointments = res))
+        .subscribe((res: Appointment[]) => (this.appointments = res));
+    } else {
+      if (this.currentSelectedDate) {
+        this.findAppointments();
+      } else {
+        this.service
+          .getAppointmentsForCurrentDate()
+          .subscribe((res: Appointment[]) => (this.appointments = res));
+      }
     }
-    else {
-      this.service
-        .getAppointmentsForCurrentDate()
-        .subscribe((res: Appointment[]) => (this.appointments = res))
-    };
-  }
-
-  appointmentsForCurrentDate() {
-    this.service
-      .getAppointmentsForCurrentDate()
-      .subscribe((res: Appointment[]) => (this.appointments = res))
   }
 
   findAppointments() {
@@ -68,7 +69,7 @@ export class AppointmentsComponent implements OnInit {
 
   openAddAppointment() {
     const dialogRef = this.dialog.open(AddAppointmentComponent);
-    dialogRef.afterClosed().subscribe(_ => this.appointmentsForCurrentDate());
+    dialogRef.afterClosed().subscribe(_ => this.fetchAppointmentsForCurrentDate());
   }
 
   openSoapNoteDialog(mrNum: number) {
@@ -85,7 +86,7 @@ export class AppointmentsComponent implements OnInit {
         appointment: app
       }
     });
-    dialogRef.afterClosed().subscribe(_ => this.appointmentsForCurrentDate());
+    dialogRef.afterClosed().subscribe(_ => this.fetchAppointmentsForCurrentDate());
   }
 
   onDateSelect(date: NgbDate) {

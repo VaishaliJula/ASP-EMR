@@ -130,11 +130,6 @@ export class AddAppointmentComponent implements OnInit {
   }
 
   createAppointment() {
-    if (!this.isFormValid) {
-      return this.snackbar.open('Slot not valid!', '', {
-        duration: 3000
-      });
-    }
     const appointment: Appointment = {
       date: new Date(this.currentSelectedDate).toISOString(),
       time: (this.selectedSlot + ':00').replace(/\s/g, ''),
@@ -144,7 +139,7 @@ export class AddAppointmentComponent implements OnInit {
       lastMedication: this.medication,
       status: 'PENDING',
       patient: {
-        mrnum: this.patientSearchText.mrnum
+        mrnum: this.user.userType === 'PATIENT' ? this.mrNum : this.patientSearchText.mrnum
       },
       hospitalStaff: {
         email: this.selectedDoctorId
@@ -155,7 +150,7 @@ export class AddAppointmentComponent implements OnInit {
       this.appointmentService
         .createAppointment(appointment, false)
         .subscribe((res: any) => {
-          if (res.appID == 0) {
+          if (res.appID === 0) {
             this.snackbar.open('Appointment already Exists on the same day!', '', {
               duration: 3000
             });

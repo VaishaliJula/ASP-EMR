@@ -38,8 +38,7 @@ export class PatientDashboardComponent implements OnInit {
           appointment => appointment.status === 'CHECKED_OUT'
         );
       });
-    }
-    else if (this.user.userType === 'STAFF') {
+    } else if (this.user.userType === 'STAFF') {
       this.http.get(`appointments/today/` + this.user.userPhone).subscribe((res: Appointment[]) => {
         this.appointments = res;
         this.pending = this.appointments.filter(

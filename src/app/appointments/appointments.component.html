@@ -28,6 +28,8 @@
   <table class="table">
     <thead>
       <th>Med Rec #</th>
+      <th>Date</th>
+      <th>Time</th>
       <th>Patient Name</th>
       <th>Doctor Name</th>
       <th>Chief Complaint</th>
@@ -39,6 +41,8 @@
     <tbody>
       <tr *ngFor="let appointment of appointments">
         <td>{{ appointment.patient.mrnum }}</td>
+        <td>{{ appointment.date }}</td>
+        <td>{{ appointment.time }}</td>
         <td>
           {{ appointment.patient.firstName }} {{ appointment.patient.lastName }}
         </td>
