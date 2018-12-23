@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegistrationService } from 'src/app/registration.service';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
+import { dateMaxValidator } from '../date-max-validator';
 
 
 @Component({
@@ -57,7 +58,7 @@ export class SignUpPageComponent implements OnInit {
       firstName: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(20), Validators.pattern("^[a-zA-Z]+$")])),
       lastName: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(20), Validators.pattern("^[a-zA-Z]+$")])),
       gender: new FormControl("", Validators.required),
-      dob: new FormControl("", Validators.required),
+      dob: new FormControl("", [Validators.required, dateMaxValidator(this.today)]),
       race: new FormControl(null, Validators.required),
       ethnicity: new FormControl(null, Validators.required),
       occupation: new FormControl("", Validators.compose([Validators.required, Validators.pattern("^[a-zA-Z ]+$")])),
