@@ -6,6 +6,7 @@ import { RegistrationService } from 'src/app/registration.service';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { dateMaxValidator } from '../date-max-validator';
+import { DoctorRegistrationService } from 'src/app/doctor-registration.service';
 
 
 @Component({
@@ -46,7 +47,7 @@ export class SignUpPageComponent implements OnInit {
   ];
 
   registrationForm;
-  constructor(private service: RegistrationService, private snackbar: MatSnackBar, private router: Router, private dateUtils: DateUtilsService) { }
+  constructor(private service: RegistrationService, private snackbar: MatSnackBar, private router: Router, private dateUtils: DateUtilsService, private doctorRegistration: DoctorRegistrationService) { }
 
   ngOnInit() {
     this.createForm();
@@ -84,6 +85,8 @@ export class SignUpPageComponent implements OnInit {
       });
     }
     else {
+      this.doctorRegistration.userPhone = null
+      this.doctorRegistration.userPassword = null
       this.service.registerPatient(value);
       this.registrationForm.reset();
     }

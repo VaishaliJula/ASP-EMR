@@ -57,10 +57,13 @@
             <div class="col-sm-3">
                 <label for="dateofBirth">Date of Birth</label>
                 <br>
-                <input class="form-control" type="Date" formControlName="dob" id="dateofBirth">
+                <input class="form-control" type="Date" formControlName="dob" id="dateofBirth" [max]="today">
                 <div *ngIf="registrationForm.controls['dob'].touched && !registrationForm.controls['dob'].valid">
                     <span *ngIf="registrationForm.controls['dob'].hasError('required') ">
                         Please select date of birth
+                    </span>
+                    <span *ngIf="registrationForm.controls['dob'].touched && registrationForm.controls['dob'].errors?.maxDate">
+                        Please select valid date
                     </span>
                 </div>
             </div>
@@ -95,10 +98,10 @@
                     <span *ngIf="registrationForm.controls['zip'].errors?.required ">
                         Zip is Required
                     </span>
-                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.maxlength ">
+                    <span *ngIf="registrationForm.controls['zip'].errors?.maxlength ">
                         Maximum length is 5
                     </span>
-                    <span *ngIf="registrationForm.controls['mobileNumber'].errors?.minlength ">
+                    <span *ngIf="registrationForm.controls['zip'].errors?.minlength ">
                         Minimum length is 5
                     </span>
                     <span *ngIf="registrationForm.controls['zip'].errors?.pattern ">
