@@ -71,6 +71,9 @@
                         Please select date of birth
                     </span>
                 </div>
+                <span *ngIf="registrationForm.controls['dob'].touched && registrationForm.controls['dob'].errors?.maxDate ">
+                  Enter valid date
+              </span>
             </div>
         </div>
 

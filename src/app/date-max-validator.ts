@@ -13,6 +13,6 @@ export function dateMaxValidator(maxDate: string): ValidatorFn {
       withinMaxDate,
       isDate(control.value) && control.value <= maxDate
     );
-    return withinMaxDate ? null : { forbiddenName: { value: control.value } };
+    return withinMaxDate ? null : { maxDate: { value: control.value } };
   };
 }
