@@ -46,11 +46,12 @@ export class AppointmentsComponent implements OnInit {
   }
 
   fetchAppointmentsForCurrentDate() {
-    if (this.user.userType === 'PATIENT') {
+    const userType = this.user.userType;
+    if (userType === 'PATIENT') {
       this.service
         .getAppointmentsForMrNo(this.user.userPhone)
         .subscribe((res: Appointment[]) => (this.appointments = res));
-    } else {
+    } else if  (userType === 'ADMIN') {
       if (this.currentSelectedDate) {
         this.findAppointments();
       } else {
@@ -58,13 +59,24 @@ export class AppointmentsComponent implements OnInit {
           .getAppointmentsForCurrentDate()
           .subscribe((res: Appointment[]) => (this.appointments = res));
       }
+    } else {
+      this.service
+        .getAppointmentsForDoctor(this.user.userPhone, this.currentSelectedDate)
+        .subscribe((res: Appointment[]) => this.appointments = res);
     }
   }
 
   findAppointments() {
-    this.service
-      .getAppointmentsForDate(this.currentSelectedDate)
-      .subscribe((res: Appointment[]) => (this.appointments = res));
+    const userType = this.user.userType;
+    if  (userType === 'ADMIN') {
+      this.service
+        .getAppointmentsForDate(this.currentSelectedDate)
+        .subscribe((res: Appointment[]) => (this.appointments = res));
+    } else if (userType === 'STAFF') {
+      this.service
+        .getAppointmentsForDoctor(this.user.userPhone, this.currentSelectedDate)
+        .subscribe((res: Appointment[]) => this.appointments = res);
+    }
   }
 
   openAddAppointment() {
