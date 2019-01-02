@@ -134,7 +134,7 @@ export class AddAppointmentComponent implements OnInit {
       date: new Date(this.currentSelectedDate).toISOString(),
       time: (this.selectedSlot + ':00').replace(/\s/g, ''),
       comments: this.comments,
-      chiefComplaints: this.chiefComplaint,
+      chiefComplaints: this.chiefComplaint.value,
       healthStatus: this.healthCondition,
       lastMedication: this.medication,
       status: 'PENDING',

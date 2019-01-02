@@ -66,6 +66,7 @@ import { PatientChartsComponent } from './patient-charts/patient-charts.componen
 import { LoginDetailsComponent } from './login-details/login-details.component';
 import { DoctorRegistrationComponent } from './doctor-registration/doctor-registration.component';
 import { UpdatePatientPersonaldetailsComponent } from './update-patient-personaldetails/update-patient-personaldetails.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { UpdatePatientPersonaldetailsComponent } from './update-patient-personal
     PatientChartsComponent,
     LoginDetailsComponent,
     DoctorRegistrationComponent,
-    UpdatePatientPersonaldetailsComponent
+    UpdatePatientPersonaldetailsComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

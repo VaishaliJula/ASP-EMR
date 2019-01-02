@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/login.service';
 // import { FormGroup } from '@angular/forms/src/model';
+import { ForgotPasswordComponent } from 'src/app/forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-login-page',
