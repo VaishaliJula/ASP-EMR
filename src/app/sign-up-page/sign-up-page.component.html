@@ -65,13 +65,13 @@
             <div class="col-sm-3">
                 <label for="dateofBirth">Date of Birth</label>
                 <br>
-                <input class="form-control" type="Date" formControlName="dob" id="dateofBirth" [max]="today">
+                <input class="form-control" type="Date" formControlName="dob" id="dateofBirth" [max]="today" [min]="minDOB">
                 <div *ngIf="registrationForm.controls['dob'].touched && !registrationForm.controls['dob'].valid">
                     <span *ngIf="registrationForm.controls['dob'].hasError('required') ">
                         Please select date of birth
                     </span>
                 </div>
-                <span *ngIf="registrationForm.controls['dob'].touched && registrationForm.controls['dob'].errors?.maxDate ">
+                <span *ngIf="registrationForm.controls['dob'].touched && (registrationForm.controls['dob'].errors?.maxDate || registrationForm.controls['dob'].errors?.minDate) ">
                   Enter valid date
               </span>
             </div>

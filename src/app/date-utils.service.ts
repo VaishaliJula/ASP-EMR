@@ -22,6 +22,14 @@ export class DateUtilsService {
     return newDate;
   }
 
+  addYears(date: Date, num: number) {
+    const year = date.getFullYear();
+    const newDate = new Date(date);
+
+    newDate.setFullYear(year + num);
+    return newDate;
+  }
+
   formatForDomInput(date:Date) {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;

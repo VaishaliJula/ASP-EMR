@@ -7,6 +7,7 @@ import { MatSnackBar, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { dateMaxValidator } from '../date-max-validator';
 import { DoctorRegistrationService } from 'src/app/doctor-registration.service';
+import { dateMinValidator } from '../date-minn-validator';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class SignUpPageComponent implements OnInit {
   ];
 
   today = this.dateUtils.formatForDomInput(new Date());
+  minDOB = this.dateUtils.formatForDomInput(this.dateUtils.addYears(new Date(), -100));
 
   race = [
     { id: 1, name: 'American Indian or Alaska Native' },
@@ -47,7 +49,13 @@ export class SignUpPageComponent implements OnInit {
   ];
 
   registrationForm;
-  constructor(private service: RegistrationService, private snackbar: MatSnackBar, private router: Router, private dateUtils: DateUtilsService, private doctorRegistration: DoctorRegistrationService) { }
+  constructor(
+    private service: RegistrationService,
+    private snackbar: MatSnackBar,
+    private router: Router,
+    private dateUtils: DateUtilsService,
+    private doctorRegistration: DoctorRegistrationService
+   ) { }
 
   ngOnInit() {
     this.createForm();
@@ -59,7 +67,7 @@ export class SignUpPageComponent implements OnInit {
       firstName: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(20), Validators.pattern("^[a-zA-Z]+$")])),
       lastName: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(20), Validators.pattern("^[a-zA-Z]+$")])),
       gender: new FormControl("", Validators.required),
-      dob: new FormControl("", [Validators.required, dateMaxValidator(this.today)]),
+      dob: new FormControl("", [Validators.required, dateMaxValidator(this.today), dateMinValidator(this.minDOB)]),
       race: new FormControl(null, Validators.required),
       ethnicity: new FormControl(null, Validators.required),
       occupation: new FormControl("", Validators.compose([Validators.required, Validators.pattern("^[a-zA-Z ]+$")])),
@@ -85,8 +93,8 @@ export class SignUpPageComponent implements OnInit {
       });
     }
     else {
-      this.doctorRegistration.userPhone = null
-      this.doctorRegistration.userPassword = null
+      this.doctorRegistration.userPhone = null;
+      this.doctorRegistration.userPassword = null;
       this.service.registerPatient(value);
       this.registrationForm.reset();
     }

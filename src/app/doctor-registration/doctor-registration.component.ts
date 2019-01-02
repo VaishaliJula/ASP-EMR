@@ -2,8 +2,9 @@ import { DoctorRegistrationService } from './../doctor-registration.service';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
-import { DateUtilsService } from "../date-utils.service";
+import { DateUtilsService } from '../date-utils.service';
 import { dateMaxValidator } from 'src/app/date-max-validator';
+import { dateMinValidator } from '../date-minn-validator';
 
 @Component({
   selector: 'app-doctor-registration',
@@ -13,6 +14,7 @@ import { dateMaxValidator } from 'src/app/date-max-validator';
 export class DoctorRegistrationComponent implements OnInit {
 
   today = this.dateUtils.formatForDomInput(new Date());
+  minDOB = this.dateUtils.formatForDomInput(this.dateUtils.addYears(new Date(), -100));
 
   registrationForm;
   constructor(private service: DoctorRegistrationService, private snackbar: MatSnackBar, private dateUtils: DateUtilsService) { }
@@ -26,7 +28,7 @@ export class DoctorRegistrationComponent implements OnInit {
     this.registrationForm = new FormGroup({
       firstName: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(20), Validators.pattern("^[a-zA-Z]+$")])),
       lastName: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(20), Validators.pattern("^[a-zA-Z]+$")])),
-      dob: new FormControl("", [Validators.required, dateMaxValidator(this.today)]),
+      dob: new FormControl("", [Validators.required, dateMaxValidator(this.today), dateMinValidator(this.minDOB)]),
       address1: new FormControl("", Validators.compose([Validators.required, Validators.maxLength(30)])),
       address2: new FormControl(""),
       zip: new FormControl("", Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern("^[0-9]+$")])),
